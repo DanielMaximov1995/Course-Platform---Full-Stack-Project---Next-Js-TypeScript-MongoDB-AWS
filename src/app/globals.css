@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1A2138;
+  color : #FAE7D0;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+[class='light'] body {
+  color: #1A2138;
+  background-color : #FAE7D0
+}
+
+.slider .thumb.active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f5ad4f;
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #FF9200;
+}
+
+.no-spinners[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@layer utilities {
+  .hide-spin-buttons::-webkit-inner-spin-button,
+  .hide-spin-buttons::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    position: absolute;
+    right: 0;
+  }
+  .shadow-text {
+    text-shadow: 0px 3px 6px rgba(112,112,112, 0.96);
+  }
+  .shadow-text-1 {
+    text-shadow: 0px 3px 6px rgba(112,112,112, 0.29);
+  }
+  .image-clip-blog {
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  .image-clip-blog-responsive {
+    -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  .image-blog {
+    filter: drop-shadow(7px 0px 6px #00000029);
+  }
+}
+
+
+@layer base {
+  .h1 {
+    @apply text-[30px] leading-tight md:text-[45px] my-8 font-semibold;
+  }
+  .h2 {
+    @apply text-[28px] leading-tight md:text-[40px] my-6 font-semibold;
+  }
+  .h3 {
+    @apply text-[24px] leading-tight md:text-[35px]  my-4 font-semibold;
+  }
+  .h4 {
+    @apply text-[22px] leading-tight md:text-[30px] my-4 font-semibold;
+  }
+  .h5 {
+    @apply text-[20px] leading-tight md:text-[25px] my-2 font-semibold;
+  }
+  .h6 {
+    @apply text-[18px] leading-tight md:text-[22px] my-2 font-semibold;
+  }
+  p {
+    @apply  my-2 tracking-wide;
+  }
+}
