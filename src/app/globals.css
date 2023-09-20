@@ -10,6 +10,7 @@ body {
   transition-duration: 300ms;
 }
 
+
 [class='light'] body {
   color: #1A2138;
   background-color : #FAE7D0
@@ -93,5 +94,23 @@ body {
   }
   p {
     @apply  my-2 tracking-wide;
+  }
+}
+
+.progress__circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 100px, 10px, 0); /* Change 50px to adjust the progress percentage */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* Spinning animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

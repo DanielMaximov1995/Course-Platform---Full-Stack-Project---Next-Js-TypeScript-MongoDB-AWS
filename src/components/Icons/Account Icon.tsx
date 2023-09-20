@@ -7,7 +7,8 @@ const strokes = {
     accent : 'stroke-accent',
     success : 'stroke-green-600',
     error : 'stroke-red-600',
-    warning : 'stroke-yellow-400'
+    warning : 'stroke-yellow-400',
+    info : 'stroke-white'
 }
 
 const AccountIcon = (props : IconsType) => {

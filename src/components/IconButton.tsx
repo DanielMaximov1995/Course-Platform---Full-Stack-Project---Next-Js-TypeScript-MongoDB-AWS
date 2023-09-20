@@ -1,5 +1,4 @@
 'use client'
-
 import {HTMLAttributes} from "react";
 
 const IconButton = (props : HTMLAttributes<any>) => {

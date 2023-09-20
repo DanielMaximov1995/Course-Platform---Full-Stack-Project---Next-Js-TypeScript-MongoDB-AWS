@@ -29,7 +29,7 @@ const HorizontalForm = () => {
 
     return (
         <div className='w-[80%] py-14 mx-auto'>
-            <p className='text-accent text-center text-[20px] font-semibold'>רוצים שנחזור אליכם עם פרטים נוספים?</p>
+            <p className='text-accentBg dark:text-accent text-center text-[20px] font-semibold'>רוצים שנחזור אליכם עם פרטים נוספים?</p>
             <form className='flex flex-wrap -mb-4' onSubmit={handleSubmit}>
                 <div className='w-full md:w-1/4 md:mb-0 p-2'>
                     <input
@@ -63,7 +63,7 @@ const HorizontalForm = () => {
                     />
                 </div>
                 <div className='w-full md:w-1/4 p-2'>
-                    <button className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 w-[200px] h-full text-[20px]'>שליחה</button>
+                    <button className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 w-full md:w-[200px] h-full text-[24px]'>שליחה</button>
                 </div>
                 <div className='w-full p-2'>
                     <span className='text-red-600 text-[18px]'>* לא נשתמש בפרטים שלכם לצורכי ספאם.</span>
