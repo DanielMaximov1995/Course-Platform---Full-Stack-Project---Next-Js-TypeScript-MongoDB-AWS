@@ -3,7 +3,7 @@ import {HTMLAttributes} from "react";
 
 const GoogleButton = (props : HTMLAttributes<any>) => {
 
-    const className = `${props.className} cursor-pointer hover:tracking-wider flex gap-x-2 items-center dark:bg-accentBg bg-accent dark:text-accentSec text-accentBg rounded transition-all p-1.5 duration-300 justify-center flex text-[20px]`
+    const className = `${props.className}  hover:tracking-wider flex gap-x-2 items-center dark:bg-accentBg bg-accent dark:text-accentSec text-accentBg rounded transition-all p-1.5 duration-300 justify-center flex text-[18px]`
 
     return (
         <button {...props} className={className}>
@@ -14,7 +14,6 @@ const GoogleButton = (props : HTMLAttributes<any>) => {
                 <path d="M5.369 14.3a7.053 7.053 0 0 1 0-4.595v-3.09H1.302a11.798 11.798 0 0 0 0 10.776L5.369 14.3Z" fill="#FBBC04" />
                 <path d="M12.241 4.75a6.727 6.727 0 0 1 4.696 1.798l3.495-3.425A11.898 11.898 0 0 0 12.243 0C7.611 0 3.38 2.558 1.301 6.615l4.067 3.09C6.336 6.862 9.048 4.75 12.24 4.75Z" fill="#EA4335" />
             </svg>
-
         </button>
     )
 }

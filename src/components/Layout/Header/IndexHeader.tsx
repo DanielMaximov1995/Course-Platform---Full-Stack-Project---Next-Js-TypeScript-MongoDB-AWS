@@ -67,7 +67,9 @@ const IndexHeader = () => {
             <AuthError searchParams={searchParams.get('error')}/>
             <div className='flex justify-between items-center w-[90%] mx-auto'>
                 <div className='items-center flex'>
+                    <Link href='/'>
                     <Image src='/logo.png' alt='' className='object-contain' width={150} height={150}/>
+                    </Link>
                     <div className='mr-10 flex items-center gap-x-12'>
                         {
                             menu.map(item => <Link

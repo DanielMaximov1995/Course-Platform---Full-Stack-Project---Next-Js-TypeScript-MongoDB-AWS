@@ -21,8 +21,8 @@ const RestrictedUserContent = ({ children } : ReactNodeType) => {
     if (isLoggedIn) {
         return <>{children}</>;
     }  else {
-        return <div>
-            <p className='text-accentSec dark:text-accentBg text-center text-[22px]'>אינך מחובר למשתמש</p>
+        return <div className='mx-auto justify-center flex flex-wrap'>
+            <p className='text-accentSec dark:text-accentBg text-center text-[20px]'>אינך מחובר למשתמש</p>
             <GoogleButton onClick={() => signIn('google')}/>
         </div>
     }
