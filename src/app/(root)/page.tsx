@@ -6,9 +6,7 @@ import AccountIcon from "@/components/Icons/Account Icon";
 
 export default function Home({searchParams} : HomePageType) {
       const h1Title = 'קורס עריכת וידאו בכדורגל'
-      const h2Title = 'קורס עריכת וידאו בכדורגל'
       const subTitle = 'בואו ללמוד איך לערוך וידאו בתוכנת Adobe Premiere'
-
 
   return (
       <main>
@@ -56,7 +54,7 @@ export default function Home({searchParams} : HomePageType) {
           </section>
           <section className='dark:bg-[#222B45] bg-accentBg/5 w-full h-auto py-20 flex flex-wrap items-center'>
               <div className='w-full'>
-                  <h4 className='h2 md:pb-14 text-center text-accentBg dark:text-accent'>למי הקורס מתאים?</h4>
+                  <h4 className='h2 md:pb-14 text-center text-accentBg dark:text-accent' id='מה_מקבלים?'>מה מקבלים?</h4>
                   <div className='flex w-[90%] md:w-[80%] flex-wrap justify-between gap-x-20 mx-auto items-center'>
                       <div className='flex flex-wrap w-full md:w-1/2'>
                           <div className='w-1/2 p-2'>
@@ -104,6 +102,7 @@ export default function Home({searchParams} : HomePageType) {
                   </div>
               </div>
           </section>
+
       </main>
   )
 }

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const RootLayout = ({children }: MainLayoutType) => {
 
     return (
-        <html lang="en" dir='rtl'>
+        <html lang="en" dir='rtl' style={{ scrollBehavior : 'smooth' }}>
         <body className={assistant.className} suppressHydrationWarning={true}>
         <ToastContainer
             position="top-center"

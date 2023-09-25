@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema<UserType>({
     lName : { type : String },
     fullName : { type : String },
     email : { type : String },
-    isAdmin : { type : String },
+    isAdmin : { type : String , default: false },
     phone : { type : String }
 })
 

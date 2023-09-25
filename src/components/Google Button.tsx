@@ -3,11 +3,11 @@ import {HTMLAttributes} from "react";
 
 const GoogleButton = (props : HTMLAttributes<any>) => {
 
-    const className = `${props.className} cursor-pointer hover:tracking-wider flex gap-x-2 items-center bg-accentBg dark:bg-accentSec text-accentSec dark:text-accentBg rounded transition-all p-1.5 duration-300 justify-center flex text-[20px]`
+    const className = `${props.className} cursor-pointer hover:tracking-wider flex gap-x-2 items-center dark:bg-accentBg bg-accent dark:text-accentSec text-accentBg rounded transition-all p-1.5 duration-300 justify-center flex text-[20px]`
 
     return (
         <button {...props} className={className}>
-            <span>התחברות</span>
+            <span>התחברות באמצעות גוגל</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none">
                 <path d="M24 12.276c0-.816-.067-1.636-.211-2.438H12.242v4.62h6.612a5.549 5.549 0 0 1-2.447 3.647v2.998h3.945C22.669 19.013 24 15.927 24 12.276Z" fill="#4285F4" />
                 <path d="M12.241 24c3.302 0 6.086-1.063 8.115-2.897l-3.945-2.998c-1.097.732-2.514 1.146-4.165 1.146-3.194 0-5.902-2.112-6.873-4.951H1.302v3.09C3.38 21.444 7.612 24 12.242 24Z" fill="#34A853" />

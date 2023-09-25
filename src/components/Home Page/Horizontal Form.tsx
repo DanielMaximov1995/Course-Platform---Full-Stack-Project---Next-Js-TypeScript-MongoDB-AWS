@@ -16,6 +16,7 @@ const HorizontalForm = () => {
                 return; // Return early if the value doesn't match the pattern
             }
         }
+
         setForm((prev) => ({
             ...prev,
             [name]: value,

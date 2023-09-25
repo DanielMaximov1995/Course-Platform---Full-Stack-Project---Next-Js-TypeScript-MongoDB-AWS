@@ -8,25 +8,23 @@ import TooltipBottom from "../../Tooltip Bottom";
 import {useSession , signIn , signOut} from 'next-auth/react'
 import {useSearchParams , useRouter} from "next/navigation";
 import GoogleButton from "@/components/Google Button";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import AuthError from "@/components/Home Page/AuthError";
+import ProfileBox from "@/components/Layout/Header/Profile Box";
 
 const menu = [
     {id: 0, name: 'עמוד הבית', path: '/'},
-    {id: 1, name: 'אודות', path: '/אודות'},
-    {id: 2, name: 'צרו קשר', path: '/צרו-קשר'},
-    {id: 3, name: 'קורס', path: '/lessons'},
+    {id: 1, name: 'מה מקבלים?', path: '/#מה_מקבלים?'},
+    {id: 2, name: 'אודות', path: '/אודות'},
+    {id: 3, name: 'צרו קשר', path: '/צרו-קשר'},
+    {id: 4, name: 'קורס', path: '/lessons'},
 ]
-
-const session = {
-    true: '',
-    false: ''
-}
 
 const IndexHeader = () => {
     const {data : user , status , update} = useSession()
     const router = useRouter()
     const searchParams = useSearchParams()
+
 
     // useEffect(() => {
     //     console.log(error)
@@ -43,22 +41,26 @@ const IndexHeader = () => {
     //     }
     // }, []);
 
-    const account = {
-        authenticated : <TooltipBottom title={user?.user?.fullName || ''}>
-            <button
-                onClick={() => signOut({redirect :false})}
-                className='bg-accentSec dark:bg-accentBg rounded-full text-accentBg dark:text-accentSec transition-all duration-300'>
-                <AccountIcon fontSize={40}/>
-            </button>
-        </TooltipBottom>,
-        unauthenticated : <GoogleButton onClick={() => signIn('google')}/>,
-        loading : <div className="h-[20px] w-[20px] md:h-[24px] md:w-[24px]">
-            <div className="relative w-full h-full rounded-full overflow-hidden">
-                <div className="progress__circle border-accent border-2">
-                </div>
-            </div>
-        </div>
-    }
+    // const account = {
+    //     authenticated : <TooltipBottom title={user?.user?.fullName || ''}>
+    //         <button
+    //             onClick={() => signOut({redirect :false})}
+    //             className='bg-accentSec dark:bg-accentBg rounded-full text-accentBg dark:text-accentSec transition-all duration-300'>
+    //             <AccountIcon fontSize={40}/>
+    //         </button>
+    //     </TooltipBottom>,
+    //     unauthenticated : <button
+    //         onClick={() => setUserAction(prev => !prev)}
+    //         className='bg-accentSec dark:bg-accentBg rounded-full text-accentBg dark:text-accentSec transition-all duration-300'>
+    //         <AccountIcon fontSize={40}/>
+    //     </button>,
+    //     loading : <div className="h-[20px] w-[20px] md:h-[24px] md:w-[24px]">
+    //         <div className="relative w-full h-full rounded-full overflow-hidden">
+    //             <div className="progress__circle border-accent border-2">
+    //             </div>
+    //         </div>
+    //     </div>
+    // }
 
     return (
         <header className='flex fixed bg-accentSec dark:bg-accentBg z-50 justify-between shadow items-center w-full h-[100px]'>
@@ -76,7 +78,7 @@ const IndexHeader = () => {
                 </div>
                 <div className='flex items-center gap-x-4'>
                     <ThemeSwitcher/>
-                    {account[status]}
+                    <ProfileBox />
                 </div>
             </div>
         </header>
