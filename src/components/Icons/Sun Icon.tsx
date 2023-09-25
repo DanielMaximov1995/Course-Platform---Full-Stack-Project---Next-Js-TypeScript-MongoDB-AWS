@@ -3,11 +3,12 @@
 import {IconsType} from "@/types/others";
 
 const strokes = {
-    primary : 'text-accentBg',
-    accent : 'text-accent',
-    success : 'text-green-600',
-    error : 'text-red-600',
-    warning : 'text-yellow-300'
+    primary : 'stroke-accentBg',
+    accent : 'stroke-accent',
+    success : 'stroke-green-600',
+    error : 'stroke-red-600',
+    warning : 'stroke-yellow-400',
+    info : 'stroke-white'
 }
 
 const SunIcon = (props : IconsType) => {
