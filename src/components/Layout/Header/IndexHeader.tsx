@@ -15,8 +15,8 @@ import ProfileBox from "@/components/Layout/Header/Profile Box";
 const menu = [
     {id: 0, name: 'עמוד הבית', path: '/'},
     {id: 1, name: 'מה מקבלים?', path: '/#מה_מקבלים?'},
-    {id: 2, name: 'אודות', path: '/אודות'},
-    {id: 3, name: 'צרו קשר', path: '/צרו-קשר'},
+    {id: 2, name: 'אודות', as: '/אודות' , path : '/about'},
+    {id: 3, name: 'צרו קשר', as:  '/צרו-קשר' , path : '/contact'},
     {id: 4, name: 'קורס', path: '/lessons'},
 ]
 
@@ -74,7 +74,7 @@ const IndexHeader = () => {
                         {
                             menu.map(item => <Link
                                 className='text-[18px] hover:font-semibold hover:tracking-wider hover:text-accent transition-all duration-300'
-                                key={item.id} href={item.path}>{item.name}</Link>)
+                                key={item.id} href={item.path} as={item?.as}>{item.name}</Link>)
                         }
                     </div>
                 </div>
