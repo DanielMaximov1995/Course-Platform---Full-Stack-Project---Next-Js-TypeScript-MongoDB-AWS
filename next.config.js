@@ -7,12 +7,13 @@ const nextConfig = {
     experimental: {
         serverActions: true
     },
-    rewrites() {
-        return [
-            { source: `/${encodeURIComponent("אודות")}`, destination: '/about' },
-            { source: `/${encodeURIComponent("צרו-קשר")}`, destination: '/contact' },
-        ]
-    }
+    // rewrites() {
+    //     return [
+    //         { source: `/${encodeURIComponent("אודות")}`, destination: '/about' },
+    //         { source: `/${encodeURIComponent("צרו-קשר")}`, destination: '/contact' },
+    //         { source: `/${encodeURIComponent("שיעורים")}`, destination: '/lessons' },
+    //     ]
+    // }
 }
 
 module.exports = nextConfig
