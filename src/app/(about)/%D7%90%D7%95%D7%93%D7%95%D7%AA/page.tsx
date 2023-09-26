@@ -11,7 +11,7 @@ const AboutPage = () => {
                 <div className='flex flex-wrap md:flex-nowrap justify-center items-center'>
                     <div>
                         <p className='h5 text-accentBg dark:text-accent mr-6'>מי אני?</p>
-                        <p className='mdLpl-48 py-2 text-[18px] mr-6'>קורס המקיף והאיכותי ביותר לעריכת וידאו בכדורגל בתוכנת Adobe Premiere. נצלו את הזמן כבר עכשיו כדי ללמוד עריכת וידאו בכודרגל אצלנו שלב אחר שלב , ללא שום צורך בניסיון קודם בעריכת וידאו.</p>
+                        <p className='md:pl-48 py-2 text-[18px] mr-6'>קורס המקיף והאיכותי ביותר לעריכת וידאו בכדורגל בתוכנת Adobe Premiere. נצלו את הזמן כבר עכשיו כדי ללמוד עריכת וידאו בכודרגל אצלנו שלב אחר שלב , ללא שום צורך בניסיון קודם בעריכת וידאו.</p>
                     </div>
                     <div className='relative md:w-[50%] w-[80%] h-full'>
                         <Image src='/daniel.webp' width={0} height={0} alt='' className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]' sizes='100vw' quality={100}/>
