@@ -18,7 +18,7 @@ export const ThemeProviderContext = ({ children } : ReactNodeType) => {
     return <>
         <ThemeProvider defaultTheme="dark" attribute="class">
             <ToastProvider>
-            {children}
+                {children}
             </ToastProvider>
         </ThemeProvider>
     </>

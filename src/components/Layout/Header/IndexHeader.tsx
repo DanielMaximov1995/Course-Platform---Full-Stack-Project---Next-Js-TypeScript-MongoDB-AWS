@@ -11,6 +11,8 @@ import GoogleButton from "@/components/Google Button";
 import {useEffect, useState} from "react";
 import AuthError from "@/components/Home Page/AuthError";
 import ProfileBox from "@/components/Layout/Header/Profile Box";
+import {UserType} from "@/types/SchemasType";
+import {ImportsTypes} from "@/types/Layout";
 
 const menu = [
     {id: 0, name: 'עמוד הבית', path: '/'},
@@ -20,7 +22,7 @@ const menu = [
     {id: 4, name: 'קורס', path: '/lessons'},
 ]
 
-const IndexHeader = () => {
+const IndexHeader = ({allUsers , allLessons} : ImportsTypes) => {
     const {data : user , status , update} = useSession()
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -80,7 +82,7 @@ const IndexHeader = () => {
                 </div>
                 <div className='flex items-center gap-x-4'>
                     <ThemeSwitcher/>
-                    <ProfileBox />
+                    <ProfileBox allUsers={allUsers} allLessons={allLessons}/>
                 </div>
             </div>
         </header>

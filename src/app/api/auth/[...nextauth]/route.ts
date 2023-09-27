@@ -28,7 +28,6 @@ export const authOptions: NextAuthOptions = {
             await dbConnect()
             const getUser = await UsersModel.findOne({ email: token.email.toLowerCase() });
             session.user = getUser
-            session.user.fullName = `${getUser.fName} ${getUser.lName}`
             return session
         },
         async signIn({ user , account , profile } : any) {
@@ -44,7 +43,7 @@ export const authOptions: NextAuthOptions = {
                     await UsersModel.findByIdAndUpdate(findUser._id , {
                         fName : profile.given_name,
                         lName : profile.family_name,
-                        fullName : profile.name
+                        fullName : profile.name,
                     })
                 }
 

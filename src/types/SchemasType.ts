@@ -1,14 +1,22 @@
 import { Types } from 'mongoose';
 
 export type UserType = {
-    _id ?: Types.ObjectId;
-    fName ?: string;
-    lName ?: string;
-    fullName ?: string;
-    email : string;
-    isAdmin ?: boolean;
-    phone : string;
-}
+    _id?: Types.ObjectId;
+    fName?: string;
+    lName?: string;
+    fullName?: string;
+    email?: string;
+    isAdmin?: boolean;
+    phone?: string;
+    createdAt ?: string;
+    lessonsCompleted ?: {
+        1 : boolean,
+        2 : boolean,
+        3 : boolean,
+        4 : boolean,
+        5 : boolean,
+    };
+};
 
 export type LessonType = {
     _id ?: Types.ObjectId;
@@ -20,5 +28,6 @@ export type LessonType = {
         url : string;
         duration : number;
     };
-    order : number;
+    order ?: number;
+    createdAt ?: string;
 }

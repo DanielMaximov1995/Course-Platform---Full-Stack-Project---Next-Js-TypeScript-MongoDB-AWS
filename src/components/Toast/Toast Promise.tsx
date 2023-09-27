@@ -6,7 +6,11 @@ import {ActionMap, ToastContainerPromiseType} from "@/types/Toast";
 
 const ToastContainerPromise = (props : ToastContainerPromiseType) => {
     const { position, onHideToast , index, toast } = props;
-    const [toastData, setToastData] = useState({ action : 'progress' , message : toast.message['progress'] });
+    const [toastData, setToastData] = useState({ action : '' , message : '' });
+
+    useEffect(() => {
+        setToastData(prev => ({...prev , action: toast.action , message: toast.message[toast.action]}))
+    },[toast])
 
     const promiseToast = async () => {
         try {
@@ -21,8 +25,10 @@ const ToastContainerPromise = (props : ToastContainerPromiseType) => {
     };
 
     useEffect(() => {
-        promiseToast();
-    }, []);
+        if (toastData.action === 'progress') {
+            promiseToast();
+        }
+    }, [toastData.action]);
 
 
     const actionMap : ActionMap = {
@@ -118,7 +124,7 @@ const ToastContainerPromise = (props : ToastContainerPromiseType) => {
             className={`fixed flex items-center cursor-pointer z-high bg-white rounded shadow-lg w-[350px] h-[60px] transition-all duration-300 ease-in-out ${isShowing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[-20px]'}`}
         >
             {actionMap[toastData.action]}
-            <div className='w-full p-2'>{toastData.message}</div>
+            <div className='w-full p-2 text-accentBg'>{toastData.message}</div>
         </div>
     );
 };

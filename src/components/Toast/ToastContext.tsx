@@ -1,6 +1,5 @@
 import React, {createContext, useState, useContext, Fragment} from 'react';
 import { ReactNodeType } from "@/types/Layout";
-
 import ToastContainer from "@/components/Toast/Toast Container";
 import ToastContainerPromise from "@/components/Toast/Toast Promise";
 import {ToastTypes} from "@/types/Toast";
@@ -9,25 +8,25 @@ const ToastContext = createContext({
     error: (message: string) => {},
     warning: (message: string) => {},
     success: (message: string) => {},
-    promise: (func: any, messages: string) => {},
+    promise: (func: any, messages: any) => {},
 });
 
 export const ToastProvider = ({ children }: ReactNodeType) => {
     const [toastQueue, setToastQueue] = useState<ToastTypes[]>([]);
 
     const toast = (action: string, message: string, promise?: any) => {
-        const id = Date.now(); // Generate a unique id for the toast
+        const id = Date.now();
         let newToast : ToastTypes;
         if (!promise) {
             newToast = { id, action, message, promise: null };
         } else {
-            newToast = { id, message, promise };
+            newToast = { id, action , message, promise };
         }
         setToastQueue((prevQueue) => [...prevQueue, newToast]);
     };
 
     const promise = (func: any, messages: string) => {
-        toast('', messages, { promise: func });
+        toast('progress', messages, { promise: func });
     };
 
     const success = (message: string) => {

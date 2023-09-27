@@ -16,7 +16,7 @@ const socialMedia = [
     { name : 'instagram' , title : '@danielvideofootballers' , src : 'https://www.instagram.com/danielvideofootballers' , icon : <span className='text-[#E1306C]'><InstagramIcon/></span> },
     { name : 'whatsapp' , title : 'WhatsApp - עונים 2-4 שעות' , src : 'https://wa.me/972972507255889' , icon : <WhatsappIcon color='success'/> },
     { name : 'email' , title : 'דוא"ל - עונים עד 24 שעות' , src : 'mailto:DanielMaximov2@gmail.com' , icon : <InboxIcon color='warning'/> },
-    { name : 'phone' , title : '0507255889' , src : 'tel:972507255889' , icon : <PhoneIcon color='info'/> },
+    { name : 'phone' , title : '0507255889' , src : 'tel:972507255889' , icon : <span className='dark:text-accentSec text-accentBg'><PhoneIcon/></span> },
 ]
 
 export default function Home() {

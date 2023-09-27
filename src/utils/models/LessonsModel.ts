@@ -11,7 +11,7 @@ const LessonSchema = new mongoose.Schema<LessonType>({
         duration : { type : Number },
     },
     order : { type : Number }
-})
+}, { timestamps : true })
 
 export default mongoose.models?.lessons ||
 mongoose.model("lessons", LessonSchema);

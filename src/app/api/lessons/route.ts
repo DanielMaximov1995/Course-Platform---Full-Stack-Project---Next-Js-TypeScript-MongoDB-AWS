@@ -1,8 +1,10 @@
+import {dbConnect} from "@/utils/dbConnect";
 import { NextResponse } from 'next/server'
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
-import UserSchema from '@/utils/models/usersModel'
-import {dbConnect} from "@/utils/dbConnect";
+import LessonSchema from "@/utils/models/LessonsModel";
+import UserSchema from "@/utils/models/usersModel";
+import {uploadFileToFolder} from "@/utils/cloudinary-cloud-storage";
 
 export const GET = async () => {
     try {
@@ -11,15 +13,15 @@ export const GET = async () => {
         if(!session) {
             return NextResponse.json({ message : 'אין לך את ההרשאה לבצע פעולה זאת !' } , { status : 401 })
         }
-        const { isAdmin } = await UserSchema.findById(session?.user?._id)
+        const { isAdmin } = await LessonSchema.findById(session?.user?._id)
         if(!isAdmin) {
             return NextResponse.json({ message : 'אין לך את ההרשאה לבצע פעולה זאת !' } , { status : 401 })
         }
 
-        const data =  await UserSchema.find()
+        const data =  await LessonSchema.find()
         return NextResponse.json(data , { status : 201 })
     } catch (err) {
-        return NextResponse.json(`שגיאה בלייבא משתמשים` , { status : 500 })
+        return NextResponse.json(`שגיאה בלייבא שיעורים` , { status : 500 })
     }
 }
 
@@ -38,17 +40,21 @@ export const POST = async (req : Request) => {
 
         const body = await req.json()
 
-        const emailExist = await UserSchema.findOne({ email: body.email.toLowerCase() });
-        const phoneExist = await UserSchema.findOne({ phone : body.phone });
+        const uploadVideo = await uploadFileToFolder(body.video , 'lessons')
 
+        const count = await LessonSchema.find()
 
-        if (emailExist || phoneExist) {
-            return NextResponse.json(`הדוא"ל/מס' הטלפון שהקשת כבר קיים`, { status: 401 });
-        }
-
-        await UserSchema.create({email : body.email.toLowerCase() , phone : body.phone});
-        return NextResponse.json({ message : `המשתמש נוסף בהצלחה !` }, { status: 201 });
+        await LessonSchema.create({
+            ...body,
+            video : {
+                fileName : body.video.fileName,
+                url : uploadVideo,
+                duration : body.video.duration
+            },
+            order : count.length +1
+        })
+        return NextResponse.json({ message : `הוידאו נוסף בהצלחה !` }, { status: 201 });
     } catch (err) {
-        return NextResponse.json(`שגיאה בניסיון יצירת משתמש חדש` , { status : 500 })
+        return NextResponse.json(`שגיאה בניסיון יצירת שיעור חדש` , { status : 500 })
     }
 }

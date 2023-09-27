@@ -35,7 +35,7 @@ const Form = () => {
         <form className='flex md:w-[60%] flex-wrap -mb-4' onSubmit={handleSubmit}>
             <div className='w-full md:mb-0 p-2'>
                 <input
-                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
+                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-accentBg text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
                     placeholder='שם'
                     name='fullName'
                     value={form.fullName || ''}
@@ -45,7 +45,7 @@ const Form = () => {
             </div>
             <div className='w-full md:w-1/2 md:mb-0 p-2'>
                 <input
-                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
+                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-accentBg text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
                     placeholder='דואר אלקטרוני'
                     name='email'
                     value={form.email || ''}
@@ -55,9 +55,9 @@ const Form = () => {
             </div>
             <div className='w-full md:w-1/2 md:mb-0 p-2'>
                 <input
-                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
-                    placeholder='נייד'
+                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-accentBg text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
                     name='phone'
+                    placeholder='נייד'
                     inputMode='tel'
                     value={form.phone || ''}
                     onChange={handleChange}
@@ -66,13 +66,16 @@ const Form = () => {
             </div>
             <div className='w-full md:mb-0 p-2'>
                 <textarea
-                    className="w-full h-[160px] transition-all duration-300 p-4 rounded-0 text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
+                    className="w-full h-[160px] transition-all duration-300 p-4 rounded-0 text-accentBg text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
                     placeholder='נייד'
                     name='message'
                     value={form.message || ''}
                     onChange={handleChange}
                     autoComplete="off"
                 />
+            </div>
+            <div className='w-full md:mb-0 p-2'>
+                <button className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 w-full py-2 h-full text-[24px]'>שליחה</button>
             </div>
         </form>
     )
