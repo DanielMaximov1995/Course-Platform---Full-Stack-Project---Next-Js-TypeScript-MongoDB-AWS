@@ -4,7 +4,8 @@ import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
 import LessonSchema from "@/utils/models/LessonsModel";
 import UserSchema from "@/utils/models/usersModel";
-import {uploadFileToFolder} from "@/utils/cloudinary-cloud-storage";
+import {uploadFileToFolderS3} from "../../../utils/aws-sdk";
+// import {uploadFileToFolder} from "@/utils/cloudinary-cloud-storage";
 
 export const GET = async () => {
     try {
@@ -40,7 +41,24 @@ export const POST = async (req : Request) => {
 
         const body = await req.json()
 
-        const uploadVideo = await uploadFileToFolder(body.video , 'lessons')
+        const uploadVideo = await uploadFileToFolderS3(body.video.url , 'lessons' ,body.video.fileName )
+
+        let files = []
+
+
+        if(body?.files.length > 0) {
+            for (let i = 0; i < body.files.length; i++) {
+                let file  = body.files[i]
+                let url = await uploadFileToFolderS3(file.url , 'assets' , file.fileName)
+                files.push({
+                    fileName : file.fileName,
+                    title : file.title,
+                    url
+                })
+            }
+        } else {
+            files = []
+        }
 
         const count = await LessonSchema.find()
 

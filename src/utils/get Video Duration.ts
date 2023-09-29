@@ -1,5 +1,3 @@
-
-
 const formatVideoDuration = (durationInSeconds: number): number => {
     const minutes = Math.floor(durationInSeconds / 60);
     const seconds = Math.floor(durationInSeconds % 60);
@@ -18,15 +16,16 @@ export const getVideoDuration = (file: string): Promise<number> => {
         video.src = file;
 
         video.onloadedmetadata = () => {
+            console.log('on')
             window.URL.revokeObjectURL(file);
             const duration = video.duration;
             let time = formatVideoDuration(duration)
             resolve(time);
         };
 
-        video.onerror = () => {
+        video.onerror = (err) => {
+            console.log(err)
             reject(new Error('Failed to load video metadata'));
         };
     });
 };
-

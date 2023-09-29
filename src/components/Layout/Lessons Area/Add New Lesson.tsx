@@ -3,13 +3,16 @@ import {ChangeEvent, FormEvent, useState} from "react";
 import {useToast} from '@/components/Toast/ToastContext'
 import {useRouter} from "next/navigation";
 import {getVideoDuration} from "@/utils/get Video Duration";
-import {postNewLesson, postNewUser} from "@/services/fetchData";
+import {postNewLesson} from "@/services/fetchData";
 import ToggleSwitch from "@/components/Toggle Switch";
+import {LessonFilesType, LessonType} from "@/types/SchemasType";
+import ButtonUploadFile from "@/components/Button Upload File";
+import AddFileIcon from "@/components/Icons/Add File Icon";
 
 
 
 const AddNewLesson = ({handleTabIndex}: { handleTabIndex: (index: number) => void }) => {
-    const [newLesson, setNewLesson] = useState({
+    const [newLesson, setNewLesson] = useState<LessonType>({
         title : '',
         description : '',
         free : false,
@@ -18,6 +21,7 @@ const AddNewLesson = ({handleTabIndex}: { handleTabIndex: (index: number) => voi
             url : '',
             duration : 0
         },
+        files : []
     });
     const toast = useToast()
     const router = useRouter()
@@ -37,41 +41,47 @@ const AddNewLesson = ({handleTabIndex}: { handleTabIndex: (index: number) => voi
         }));
     }
 
+    const addNewFile = () => {
+        let newObj: LessonFilesType = { url: '', title: '' , fileName : '' };
+        setNewLesson(prev => ({
+            ...prev,
+            files: [...(prev?.files ?? []), newObj] // Use default empty array if prev?.files is undefined
+        }));
+    };
+
+    const handleFilesChange = (e : ChangeEvent<HTMLInputElement>) => {
+        const { name , value , files} = e.target as any
+        let fileData = files?.[0]
+        const dataId = e.target.getAttribute('data-id') as any
+        setNewLesson(prev => ({
+            ...prev,
+            files: prev.files!.map((file, i) =>
+                i === parseInt(dataId) ? { ...file, [name]: fileData ? URL.createObjectURL(fileData) : value , fileName : fileData ? fileData.name : '' } : file
+            )
+        }))
+    }
+
     const handleVideo = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-
-        if (file) {
-            try {
-                // Convert the File to a data URL
-                const reader = new FileReader();
-                reader.onload = async (event) => {
-                    if (event.target) {
-                        const dataUrl = event.target.result as string;
-
-                        try {
-                            const duration = await getVideoDuration(dataUrl);
-
-                            setNewLesson((prev) => ({
-                                ...prev,
-                                video: {
-                                    ...prev.video,
-                                    fileName: file.name,
-                                    duration: duration || 0,
-                                    url: dataUrl,
-                                },
-                            }));
-                        } catch (error) {
-                            console.error('Error getting video duration:', error);
-                        }
-                    }
-                };
-
-                reader.readAsDataURL(file);
-            } catch (error) {
-                console.error('Error reading file:', error);
+        try {
+            if(!file) {
+                return null
             }
+            let duration =  await getVideoDuration(URL.createObjectURL(file));
+            setNewLesson((prev) => ({
+                ...prev,
+                video: {
+                    ...prev.video,
+                    fileName : file.name,
+                    url : URL.createObjectURL(file),
+                    duration: duration || 0,
+                },
+            }));
+        } catch (error) {
+            console.error('Error reading file:', error);
         }
     };
+
 
     const handleSubmit = () => {
         if (!newLesson.title || !newLesson.description || !newLesson.video.url) {
@@ -117,8 +127,29 @@ const AddNewLesson = ({handleTabIndex}: { handleTabIndex: (index: number) => voi
                 />
             </div>
             <div className='w-full flex items-center gap-x-2 md:mb-0 p-2'>
-                    <input type="file" accept="video/*" onChange={handleVideo}/>
+                <ButtonUploadFile fileName={newLesson.video.fileName} onChange={handleVideo} name='url' icon={<AddFileIcon/>}/>
+                    {/*<input type="file" accept="video/*" onChange={handleVideo}/>*/}
                 <p>זמן וידאו : {newLesson.video.duration}</p>
+            </div>
+            <div className='w-full p-2'>
+                <div className='border-accentBg dark:border-accentSec border-dashed border-[1px]'>
+                    <div className='p-2'>
+                        <button onClick={addNewFile} className='bg-accent dark:bg-accentSec dark:text-accentBg text-accentSec font-semibold text-[20px] px-2'>הוספת קובץ</button>
+                    </div>
+                    <div className='flex flex-wrap'>
+                        {
+                            newLesson.files!.length > 0 && newLesson.files?.map((file , index) => (
+                                <div key={index} className='p-2 w-1/2 md:w-1/3'>
+                                    <div className='border-accentBg dark:border-accentSec p-2 border-[1px]'>
+                                        <div className=''>
+                                            <ButtonUploadFile fileName={file.fileName} onChange={handleFilesChange} index={index.toString()} name='url' icon={<AddFileIcon/>}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
             <div className='w-full md:mb-0 px-2 flex justify-start'>
                 <ToggleSwitch active={newLesson.free} onClick={(newState) => setNewLesson((prev) => ({ ...prev, free: newState }))}>
@@ -126,8 +157,8 @@ const AddNewLesson = ({handleTabIndex}: { handleTabIndex: (index: number) => voi
                 </ToggleSwitch>
             </div>
             <div className='w-full md:mb-0 p-2'>
-                <button onClick={handleSubmit}
-                        className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 w-full py-2 h-full text-[24px]'>הוספת
+                <button disabled={!newLesson.video.duration} onClick={handleSubmit}
+                        className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 w-full py-2 h-full disabled:pointer-events-none disabled:bg-gray-600 text-[24px]'>הוספת
                     שיעור חדש
                 </button>
             </div>

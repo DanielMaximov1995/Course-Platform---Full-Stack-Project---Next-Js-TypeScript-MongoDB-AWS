@@ -48,6 +48,7 @@ export const updateUserById = async (id: string , data : UserType) => {
 }
 
 export const postNewLesson = async (data : LessonType) => {
+
     let resp = await fetch('/api/lessons', {
         method: 'POST',
         headers: {

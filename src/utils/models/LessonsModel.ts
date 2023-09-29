@@ -10,6 +10,13 @@ const LessonSchema = new mongoose.Schema<LessonType>({
         url : { type : String },
         duration : { type : Number },
     },
+    files : [
+        {
+            fileName : { type : String },
+            url : { type : String },
+            title : { type : String },
+        }
+    ],
     order : { type : Number }
 }, { timestamps : true })
 

@@ -18,6 +18,12 @@ export type UserType = {
     };
 };
 
+export type LessonFilesType = {
+    url ?: Blob | string;
+    title ?: string;
+    fileName ?: string;
+}
+
 export type LessonType = {
     _id ?: Types.ObjectId;
     title ?: string;
@@ -25,9 +31,10 @@ export type LessonType = {
     free : boolean;
     video : {
         fileName : string;
-        url : string;
+        url ?: Blob | string;
         duration : number;
     };
+    files ?: LessonFilesType[];
     order ?: number;
     createdAt ?: string;
 }
