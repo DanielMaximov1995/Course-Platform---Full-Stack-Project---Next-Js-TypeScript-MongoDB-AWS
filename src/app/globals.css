@@ -118,3 +118,18 @@ body {
 .z-high {
   z-index: 9999;
 }
+
+@layer base {
+  .input {
+    @apply w-full h-[60px] transition-all duration-300 px-4 text-accentBg text-[18px] bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent;
+  }
+  .text-area {
+    @apply w-full h-[160px] transition-all duration-300 p-4 text-accentBg text-[18px] bg-white outline-accent outline outline-1 outline-accent focus:text-accent;
+  }
+  .btn {
+    @apply p-2 transition-all duration-300 text-[20px];
+  }
+  .effect {
+    @apply transition-all duration-300;
+  }
+}

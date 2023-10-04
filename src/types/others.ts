@@ -6,6 +6,11 @@ export type IconsType = {
     position ?: "right" | "left" | "up" | "bottom"
 }
 
-// export interface CustomInputElement extends HTMLInputElement {
-//     'data-id' ?: any;
-// }
+export type CustomEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement> & {
+    target: {
+        name: string;
+        value: string;
+        id: string;
+    };
+};
+

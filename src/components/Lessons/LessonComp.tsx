@@ -3,7 +3,7 @@ import React, {Fragment, useEffect} from 'react'
 import {LessonFilesType, LessonType} from "@/types/SchemasType";
 import {useRouter, useSearchParams} from "next/navigation";
 import {useSession} from "next-auth/react";
-import ChevronIcon from "@/components/Icons/Chevron Icon";
+import ChevronLeft from "@/components/Icons/Chevron Left";
 import { useState } from 'react'
 import ShowVideoButton from "@/components/Lessons/Show Video Button";
 import Link from "next/link";
@@ -39,7 +39,7 @@ const LessonComp = ({lessons , order : orderNow}: LessonsCompType) => {
                             <div
                                 className={`flex items-center justify-between h-16 px-3 group-hover:font-bold transition-all duration-300 group-hover:tracking-widest text-accentSec dark:text-accentBg text-[22px] ${active && 'font-bold tracking-widest'}`}>
                                 <span >{lesson.title}</span>
-                                <span className={`${active && 'rotate-180'} transition-all duration-300`}><ChevronIcon position={'bottom'}/></span>
+                                <span className={`${active && 'rotate-180'} transition-all duration-300`}><ChevronLeft position={'bottom'}/></span>
                             </div>
                         </button>
                             <div className={`${active ? 'max-h-max' : 'max-h-0'} px-2 overflow-hidden transition-all duration-300 dark:bg-accentSec bg-accentBg text-accentSec dark:text-accentBg`}>

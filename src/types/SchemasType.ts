@@ -37,16 +37,17 @@ export type LessonType = {
     createdAt ?: string;
 }
 
-export type boxesWithImageType = {
+export type BoxesWithImageType = {
     title?: string;
     subTitle?: string;
     pic?: {
         fileName?: string;
         url?: string;
+        alt ?: string;
     };
 }
 
-export type boxesWithIconType = {
+export type BoxesWithIconType = {
     title?: string;
     subTitle?: string;
     icon ?: string
@@ -60,6 +61,7 @@ export type SiteContentType = {
     text?: string;
     pic?: {
         fileName?: string;
+        alt ? : string;
         url?: string;
     };
     title1?: string;
@@ -67,14 +69,16 @@ export type SiteContentType = {
     text1?: string;
     pic1?: {
         fileName?: string;
+        alt ?: string;
         url?: string;
     };
-    boxesWithImage?: boxesWithImageType[];
-    boxesWithIcon?: boxesWithIconType[];
+    boxesWithImage?: BoxesWithImageType[];
+    boxesWithIcon?: BoxesWithIconType[];
     title2?: string;
     subTitle2?: string;
     pic2?: {
         fileName?: string;
+        alt ? : string;
         url?: string;
     };
 }

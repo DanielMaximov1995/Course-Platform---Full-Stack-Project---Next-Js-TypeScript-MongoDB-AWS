@@ -1,6 +1,13 @@
 import {dbConnect} from "@/utils/dbConnect";
 import UserSchema from "@/utils/models/usersModel";
 import LessonSchema from "@/utils/models/LessonsModel";
+import SiteContentModel from "@/utils/models/SiteContentModel";
+
+export const getSiteContent = async () => {
+    await dbConnect()
+    const data =  await SiteContentModel.find().maxTimeMS(15000);
+    return JSON.parse(JSON.stringify(data))
+}
 
 export const getUsers = async () => {
     await dbConnect()
@@ -18,6 +25,12 @@ export const getLessons = async () => {
 export const getLessonByOrder = async (order : number) => {
     await dbConnect()
     const data =  await LessonSchema.findOne({order}).maxTimeMS(15000);
+    return JSON.parse(JSON.stringify(data))
+}
+
+export const getSiteContentBySlug = async (slug : string) => {
+    await dbConnect()
+    const data =  await SiteContentModel.findOne({slug}).maxTimeMS(15000);
     return JSON.parse(JSON.stringify(data))
 }
 

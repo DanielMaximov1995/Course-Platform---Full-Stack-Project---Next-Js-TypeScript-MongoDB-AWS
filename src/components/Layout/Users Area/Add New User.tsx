@@ -53,7 +53,7 @@ const AddNewUser = ({handleTabIndex}: { handleTabIndex: (index: number) => void 
         <form onSubmit={handleSubmit}>
             <div className='w-full md:mb-0 p-2'>
                 <input
-                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-accentBg text-[18px] bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
+                    className="input"
                     placeholder='דואר אלקטרוני'
                     name='email'
                     value={newUser.email || ''}
@@ -63,7 +63,7 @@ const AddNewUser = ({handleTabIndex}: { handleTabIndex: (index: number) => void 
             </div>
             <div className='w-full md:mb-0 p-2'>
                 <input
-                    className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-accentBg text-[18px] bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
+                    className="input"
                     placeholder='נייד'
                     inputMode='tel'
                     name='phone'

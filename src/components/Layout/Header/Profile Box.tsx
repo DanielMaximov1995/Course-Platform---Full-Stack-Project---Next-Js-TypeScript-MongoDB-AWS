@@ -13,8 +13,9 @@ import MainUsers from "@/components/Layout/Users Area/Main";
 import RestrictedAdminContent from "@/components/Restricted Admin Content";
 import {UserType} from "@/types/SchemasType";
 import {ImportsTypes} from "@/types/Layout";
+import MainContent from "@/components/Layout/Site Content/Main";
 
-const ProfileBox = ({allUsers , allLessons} : ImportsTypes) => {
+const ProfileBox = ({allUsers , allLessons , allContents} : ImportsTypes) => {
     const {data : user , status , update} = useSession()
     const [open, setOpen] = useState(false);
     const boxRef = useRef<HTMLDivElement | null>(null);
@@ -53,6 +54,9 @@ const ProfileBox = ({allUsers , allLessons} : ImportsTypes) => {
                             </div>
                             <div className='py-2 '>
                                 <MainLessons allLessons={allLessons}/>
+                            </div>
+                            <div className='p-2'>
+                                <MainContent allContents={allContents}/>
                             </div>
                         </RestrictedAdminContent>
                         <button

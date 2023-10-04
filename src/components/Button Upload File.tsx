@@ -1,11 +1,11 @@
 'use client'
 import {ChangeEvent, FC, Fragment, InputHTMLAttributes, ReactNode, useState} from "react";
-import CloseIcon from "./Icons/Close Icon";
 import {s3} from "@/utils/s3-sdk";
 import {getVideoDuration} from "@/utils/get Video Duration";
 import AWS from "aws-sdk";
 import ProgressBar from "@/components/Progress Bar";
 import {LessonFilesType} from "@/types/SchemasType";
+import {AddFileIcon, CloseIcon} from "@/components/Icons";
 
 interface ButtonUploadFileProps extends InputHTMLAttributes<HTMLInputElement> {
     titleFile?: string;
@@ -35,18 +35,12 @@ const ButtonUploadFile: FC<ButtonUploadFileProps> = (props) => {
 
             const finalFileKey = decodeURIComponent(encodedFileKey);
 
-            console.log(finalFileKey === "assets/Football Effects DVF.zip")
-
-
             const params : AWS.S3.DeleteObjectRequest = {
                 Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME!,
                 Key: finalFileKey,
             };
 
-            let deleteFile = s3.deleteObject(params, (err, data) => {
-                if (err) console.log(err, err.stack);
-                else console.log(data);
-            });
+            s3.deleteObject(params, (err, data) => {});
 
             let data: LessonFilesType = {
                 duration: 0,
@@ -55,7 +49,7 @@ const ButtonUploadFile: FC<ButtonUploadFileProps> = (props) => {
             };
 
             if (index !== undefined) {
-                await handleChange(parseInt(index), data);
+                await handleChange(index, data);
             } else {
                 await handleChange(undefined, data);
             }
@@ -107,7 +101,7 @@ const ButtonUploadFile: FC<ButtonUploadFileProps> = (props) => {
                 }
 
                 if(index) {
-                    handleChange(parseInt(index) , data)
+                    handleChange(index , data)
                 } else {
                     handleChange(undefined , data)
                 }
@@ -129,7 +123,7 @@ const ButtonUploadFile: FC<ButtonUploadFileProps> = (props) => {
                         </Fragment> :
                         <Fragment>
                             <label htmlFor={htmlForData} className='text-[16px] flex items-center px-2 h-auto bg-accent dark:bg-accent text-accentBg'>
-                                <span>{icon}</span>
+                                <span><AddFileIcon/></span>
                             </label>
                             <input
                                 id={htmlForData}

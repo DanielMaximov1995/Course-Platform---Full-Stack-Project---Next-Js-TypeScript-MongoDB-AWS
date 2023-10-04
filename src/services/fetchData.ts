@@ -1,4 +1,4 @@
-import {LessonType, ObjectIdType, UserType} from "@/types/SchemasType";
+import {LessonType, ObjectIdType, SiteContentType, UserType} from "@/types/SchemasType";
 
 export const postFile = async (file : File , folder : string) => {
     const data = new FormData()
@@ -116,6 +116,22 @@ export const updateLessonById = async (id: ObjectIdType | any , data : LessonTyp
 
 export const updateLessonOrder = async (data : LessonType | any) => {
     let resp = await fetch(`/api/lessons`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    if (!resp.ok) {
+        let err = await resp.json();
+        throw new Error(err);
+    }
+    return resp.json();
+}
+
+export const updateContentBySlug = async (slug : string , data : SiteContentType) => {
+    let resp = await fetch(`/api/site-content/${slug}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

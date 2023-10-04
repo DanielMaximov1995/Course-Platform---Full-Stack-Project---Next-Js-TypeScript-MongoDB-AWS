@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: false,
     images: {
-        domains: ['res.cloudinary.com' ,  'dvf-course.co.il']
+        domains: ['dvf-course.s3.eu-central-1.amazonaws.com' ,  'dvf-course.co.il']
     },
     generateEtags: false,
     experimental: {

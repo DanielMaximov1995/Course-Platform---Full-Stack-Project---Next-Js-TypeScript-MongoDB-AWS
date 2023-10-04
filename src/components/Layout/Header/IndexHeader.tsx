@@ -22,7 +22,7 @@ const menu = [
     {id: 4, name: 'קורס', path: '/lessons'},
 ]
 
-const IndexHeader = ({allUsers , allLessons} : ImportsTypes) => {
+const IndexHeader = ({allUsers , allLessons , allContents} : ImportsTypes) => {
     const {data : user , status , update} = useSession()
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -82,7 +82,7 @@ const IndexHeader = ({allUsers , allLessons} : ImportsTypes) => {
                 </div>
                 <div className='flex items-center gap-x-4'>
                     <ThemeSwitcher/>
-                    <ProfileBox allUsers={allUsers} allLessons={allLessons}/>
+                    <ProfileBox allUsers={allUsers} allLessons={allLessons} allContents={allContents}/>
                 </div>
             </div>
         </header>

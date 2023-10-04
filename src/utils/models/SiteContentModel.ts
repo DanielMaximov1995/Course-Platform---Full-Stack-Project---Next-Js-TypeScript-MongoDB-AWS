@@ -8,6 +8,7 @@ const SiteContentSchema = new mongoose.Schema<SiteContentType>({
     text : { type : String },
     pic : {
         fileName : { type : String },
+        alt : { type : String },
         url : { type : String },
     },
     title1 : { type : String },
@@ -15,6 +16,7 @@ const SiteContentSchema = new mongoose.Schema<SiteContentType>({
     text1 : { type : String },
     pic1 : {
         fileName : { type : String },
+        alt : { type : String },
         url : { type : String },
     },
     boxesWithImage : [
@@ -24,6 +26,7 @@ const SiteContentSchema = new mongoose.Schema<SiteContentType>({
             pic: {
                 fileName: {type: String},
                 url: {type: String},
+                alt : { type : String },
             }
         }
     ],
@@ -38,6 +41,7 @@ const SiteContentSchema = new mongoose.Schema<SiteContentType>({
     subTitle2: {type: String},
     pic2: {
         fileName: {type: String},
+        alt : { type : String },
         url: {type: String},
     }
 }, { timestamps : true })

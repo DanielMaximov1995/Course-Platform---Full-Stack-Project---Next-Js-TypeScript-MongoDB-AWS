@@ -18,7 +18,7 @@ export default function Home({searchParams} : HomePageType) {
                       <p className='md:pl-48 py-2 text-[18px] mr-6'>קורס המקיף והאיכותי ביותר לעריכת וידאו בכדורגל בתוכנת Adobe Premiere. נצלו את הזמן כבר עכשיו כדי ללמוד עריכת וידאו בכודרגל אצלנו שלב אחר שלב , ללא שום צורך בניסיון קודם בעריכת וידאו.</p>
                   </div>
                   <div className='relative  w-full h-full'>
-                      <Image src='/13038.png' width={0} height={0} alt=''  className='object-contain w-full rounded-[24px]' sizes='100vw' quality={100}/>
+                      <Image src='/13038.png' alt='' width={0} height={0}   className='object-contain w-full rounded-[24px]' sizes='100vw' quality={100}/>
                   </div>
           </section>
           <section className='dark:bg-[#222B45] bg-accentBg/5 w-full h-auto py-20 flex flex-wrap items-center'>

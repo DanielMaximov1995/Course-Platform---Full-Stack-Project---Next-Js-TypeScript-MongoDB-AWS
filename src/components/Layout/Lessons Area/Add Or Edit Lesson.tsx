@@ -80,11 +80,12 @@ const AddOrEditLesson = ({handleTabIndex , lessonData}: LessonCompType) => {
         }))
     }
 
-    const handleFileToFiles = (index : number | undefined , fileUrl : { url : string , fileName : string }) => {
+    const handleFileToFiles = (index : string , fileUrl : { url : string , fileName : string }) => {
+
         setLesson(prev => ({
             ...prev,
             files: prev.files!.map((file, i) =>
-                i === index ? { ...file, url : fileUrl.url, fileName : fileUrl.fileName } : file
+                i === parseInt(index) ? { ...file, url : fileUrl.url, fileName : fileUrl.fileName } : file
             )
         }))
     }
@@ -146,7 +147,7 @@ const AddOrEditLesson = ({handleTabIndex , lessonData}: LessonCompType) => {
             </div>
             <div className='w-full md:mb-0 p-2'>
                 <textarea
-                    className="w-full h-[160px]  transition-all duration-300 p-4 rounded-0 text-accentBg text-[18px] bg-white outline-accent outline outline-1 outline-accent focus:text-accent"
+                    className="text-area"
                     placeholder='תיאור'
                     name='description'
                     value={lesson.description || ''}
@@ -156,7 +157,7 @@ const AddOrEditLesson = ({handleTabIndex , lessonData}: LessonCompType) => {
             </div>
             <div className='w-full flex items-center gap-x-2 md:mb-0 p-2'>
                 <div className='w-1/2 flex justify-center'>
-                    <ButtonUploadFile folder='lessons' urlFile={lesson.video?.url} handleChange={handleVideo} fileName={lesson.video.fileName} htmlForData="upload-For-Video-Lesson" accept='video/*' name='url' icon={<AddFileIcon/>}/>
+                    <ButtonUploadFile folder='lessons' urlFile={lesson.video?.url} handleChange={handleVideo} fileName={lesson.video.fileName} htmlForData="upload-For-Video-Lesson" accept='video/*' name='url'/>
                 </div>
                 <div className='w-1/2 flex justify-center'>
                 <p className={`${lessonData ? 'text-accentSec dark:text-accentBg' : 'dark:text-accentSec text-accentBg'}`}>זמן וידאו : {lesson.video.duration}</p>
@@ -185,7 +186,7 @@ const AddOrEditLesson = ({handleTabIndex , lessonData}: LessonCompType) => {
                                                     autoComplete="off"
                                                 />
                                             </div>
-                                            <ButtonUploadFile urlFile={file.url} folder='assets' fileName={file.fileName} handleChange={handleFileToFiles} htmlForData={`upload-for-file-${index}`} index={index.toString()} name='url' icon={<AddFileIcon/>}/>
+                                            <ButtonUploadFile urlFile={file.url} folder='assets' fileName={file.fileName} handleChange={handleFileToFiles} htmlForData={`upload-for-file-${index}`} index={index.toString()} name='url'/>
                                         </div>
                                     </div>
                                 </div>
