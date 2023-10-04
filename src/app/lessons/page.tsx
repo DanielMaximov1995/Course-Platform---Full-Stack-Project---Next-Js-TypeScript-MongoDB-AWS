@@ -17,9 +17,9 @@ const Lessons = async (props : Props) => {
     const session = await getServerSession(authOptions);
 
     return (
-        <main className="flex h-screen flex-col items-center justify-between pt-16">
+        <main className="flex md:h-screen flex-col items-center justify-between pt-16">
                 <h1 className='h2 border-x-[4px] border-accentBg dark:border-accent px-6 md:px-40 mt-20 rounded-xl text-accentBg dark:text-accent'>קורס</h1>
-                <section className='w-[90%] mx-auto h-auto'>
+                <section className='w-[90%] mx-auto md:h-screen'>
                     <div className={`flex flex-wrap ${order ? "justify-evenly" : "gap-x-10"}`}>
                         <div className='md:order-0 order-1'>
                             <LessonComp lessons={lessons} order={parseInt(order)}/>

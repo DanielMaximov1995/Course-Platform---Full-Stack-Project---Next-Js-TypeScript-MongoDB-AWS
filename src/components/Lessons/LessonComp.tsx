@@ -59,7 +59,9 @@ const LessonComp = ({lessons , order : orderNow}: LessonsCompType) => {
                                             }
                                         </div>  : null
                                     }
-                                    <ShowVideoButton order={lesson.order!} free={lesson.free!} isLoginIn={status === 'authenticated'}/>
+                                    <div className={!isLogin ? 'w-full' : ''}>
+                                        <ShowVideoButton order={lesson.order!} free={lesson.free!} isLoginIn={status === 'authenticated'}/>
+                                    </div>
                                 </div>
                             </div>
                     </div>

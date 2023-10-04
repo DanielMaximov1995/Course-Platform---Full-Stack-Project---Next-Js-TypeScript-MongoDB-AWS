@@ -15,7 +15,7 @@ export default function Home({searchParams} : HomePageType) {
                   <div>
                       <h1 className='h2 border-r-[4px] border-accentBg dark:border-accent px-6 rounded-xl text-accentBg dark:text-accent'>{h1Title}</h1>
                       <p className='h5 text-accentBg dark:text-accent mr-6'>{subTitle}</p>
-                      <p className='pl-48 py-2 text-[18px] mr-6'>קורס המקיף והאיכותי ביותר לעריכת וידאו בכדורגל בתוכנת Adobe Premiere. נצלו את הזמן כבר עכשיו כדי ללמוד עריכת וידאו בכודרגל אצלנו שלב אחר שלב , ללא שום צורך בניסיון קודם בעריכת וידאו.</p>
+                      <p className='md:pl-48 py-2 text-[18px] mr-6'>קורס המקיף והאיכותי ביותר לעריכת וידאו בכדורגל בתוכנת Adobe Premiere. נצלו את הזמן כבר עכשיו כדי ללמוד עריכת וידאו בכודרגל אצלנו שלב אחר שלב , ללא שום צורך בניסיון קודם בעריכת וידאו.</p>
                   </div>
                   <div className='relative  w-full h-full'>
                       <Image src='/13038.png' width={0} height={0} alt=''  className='object-contain w-full rounded-[24px]' sizes='100vw' quality={100}/>
