@@ -11,6 +11,13 @@ export const getUsers = async () => {
 export const getLessons = async () => {
     await dbConnect()
     const data =  await LessonSchema.find().maxTimeMS(15000);
+    const dataSorted = data.sort((a , b) => a.order - b.order)
+    return JSON.parse(JSON.stringify(dataSorted))
+}
+
+export const getLessonByOrder = async (order : number) => {
+    await dbConnect()
+    const data =  await LessonSchema.findOne({order}).maxTimeMS(15000);
     return JSON.parse(JSON.stringify(data))
 }
 

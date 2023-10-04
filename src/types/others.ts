@@ -2,7 +2,8 @@ import {ChangeEvent, ReactNode} from "react";
 
 export type IconsType = {
     color ?: "primary" | "accent" | "success" | "error" | "warning" | "info";
-    fontSize ?: number
+    fontSize ?: number;
+    position ?: "right" | "left" | "up" | "bottom"
 }
 
 // export interface CustomInputElement extends HTMLInputElement {

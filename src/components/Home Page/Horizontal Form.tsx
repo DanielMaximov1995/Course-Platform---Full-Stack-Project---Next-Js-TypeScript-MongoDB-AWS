@@ -29,7 +29,7 @@ const HorizontalForm = () => {
     }
 
     return (
-        <div className='w-[80%] py-14 mx-auto'>
+        <div className='mx-auto'>
             <p className='text-accentBg dark:text-accent text-center text-[20px] font-semibold'>רוצים שנחזור אליכם עם פרטים נוספים?</p>
             <form className='flex flex-wrap -mb-4' onSubmit={handleSubmit}>
                 <div className='w-full md:w-1/4 md:mb-0 p-2'>

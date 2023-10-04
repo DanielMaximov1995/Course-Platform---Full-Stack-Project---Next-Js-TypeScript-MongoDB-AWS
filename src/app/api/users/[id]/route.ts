@@ -39,7 +39,10 @@ export const PUT = async (req : Request , {params} : { params: { id : string }})
 
         const body = await req.json()
 
-        const data =  await UserSchema.findByIdAndUpdate(params.id , body)
+        let getUser = await UserSchema.findById(params.id)
+        getUser = { ...getUser.toObject(), ...body };
+
+        const data =  await UserSchema.findByIdAndUpdate(params.id , getUser)
         return NextResponse.json({message : 'המשתמש עודכן בהצלחה !'} , { status : 201 })
     } catch (err) {
         return NextResponse.json(`שגיאה בלייבא משתמשים` , { status : 500 })

@@ -1,14 +1,12 @@
 'use client'
-
-import UsersIcon from "@/components/Icons/Users Icon";
 import Modal from "@/components/Modal";
 import {useState , ReactNode} from "react";
 import AcademicIcon from "@/components/Icons/Academic Icon";
-import AddNewLesson from "@/components/Layout/Lessons Area/Add New Lesson";
+import AddOrEditLesson from "@/components/Layout/Lessons Area/Add Or Edit Lesson";
 import {LessonType} from "@/types/SchemasType";
 import Lessons from "@/components/Layout/Lessons Area/Lessons";
 
-const MainLessons = ({allLessons} : { allLessons : LessonType }) => {
+const MainLessons = ({allLessons} : { allLessons : LessonType[] }) => {
     const [openLessonState, setOpenLessonState] = useState(false);
     const [tabIndex, setTabIndex] = useState(0);
 
@@ -20,7 +18,7 @@ const MainLessons = ({allLessons} : { allLessons : LessonType }) => {
 
     const viewTab : { [key: number]: ReactNode }= {
         0: <Lessons allLessons={allLessons}/>,
-        1 : <AddNewLesson handleTabIndex={handleTabIndex}/>
+        1 : <AddOrEditLesson handleTabIndex={handleTabIndex}/>
     }
 
     const ViewTabCurrent = viewTab[tabIndex]
@@ -34,8 +32,8 @@ const MainLessons = ({allLessons} : { allLessons : LessonType }) => {
                 <span>שיעורים</span>
             </button>
             <Modal isOpen={openLessonState} onClose={() => setOpenLessonState(prev => !prev)}>
-                <div className='w-full md:w-auto h-auto z-50 p-6 bg-accentSec dark:bg-accentBg rounded'>
-                    <div className='w-full mx-auto'>
+                <div className='w-full md:w-auto h-auto overflow-auto z-50 p-6 bg-accentSec dark:bg-accentBg rounded'>
+                    <div className='w-full h-full mx-auto'>
                         <div className='flex my-4 justify-center gap-x-8'>
                             {
                                 tabs.map((tab , index) => (

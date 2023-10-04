@@ -35,7 +35,7 @@ export default function Home({searchParams} : HomePageType) {
                       </div>
                   </div>
               </div>
-              <div className='w-full mx-auto'>
+              <div className='w-full mx-auto w-[70%]'>
                 <HorizontalForm/>
               </div>
           </section>

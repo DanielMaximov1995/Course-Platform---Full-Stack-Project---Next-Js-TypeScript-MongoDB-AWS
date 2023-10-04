@@ -9,11 +9,11 @@ const UserSchema = new mongoose.Schema<UserType>({
     isAdmin : { type : Boolean , default: false },
     phone : { type : String , required: true },
     lessonsCompleted : {
+        0 : { type : Boolean , default: false },
         1 : { type : Boolean , default: false },
         2 : { type : Boolean , default: false },
         3 : { type : Boolean , default: false },
         4 : { type : Boolean , default: false },
-        5 : { type : Boolean , default: false },
     }
 },{timestamps : true});
 
