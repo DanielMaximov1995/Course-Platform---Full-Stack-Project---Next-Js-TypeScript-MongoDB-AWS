@@ -6,10 +6,9 @@ import IndexHeader from "@/components/Layout/Header/IndexHeader";
 import IndexFooter from "@/components/Layout/IndexFooter";
 import {ThemeProviderContext} from "@/components/ThemeContext";
 import AuthProvider from "@/components/Auth Provider";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {getLessons, getSiteContent, getUsers} from "@/services/getData";
-import {ChevronIcon, WhatsappIcon} from "@/components/Icons";
+import ScrollTop from "@/components/Scroll Top";
+import WhatsAppFloat from "@/components/WhatsApp Float";
 
 const assistant = Assistant({subsets: ['latin']})
 export const metadata: Metadata = {
@@ -31,8 +30,8 @@ const RootLayout = async ({children }: MainLayoutType) => {
             <main className='h-screen relative'>
                 <IndexHeader allUsers={getAllUsers} allLessons={getAllLessons} allContents={getAllContents}/>
                 {children}
-                <div className='bg-green-600 cursor-pointer fixed bottom-16 right-2 rounded-full p-1'><WhatsappIcon color='info' fontSize={40}/></div>
-                <div className='bg-accentBg dark:bg-accent fixed cursor-pointer bottom-2 right-2 rounded-full p-1'><ChevronIcon position='up' color='info' fontSize={40}/></div>
+                <WhatsAppFloat/>
+                <ScrollTop/>
                 <IndexFooter/>
             </main>
         </ThemeProviderContext>

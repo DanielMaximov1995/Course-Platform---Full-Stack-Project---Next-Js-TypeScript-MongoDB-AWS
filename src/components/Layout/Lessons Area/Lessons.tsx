@@ -1,6 +1,6 @@
 'use client'
 import React, {useEffect, useState} from "react";
-import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { updateLessonOrder } from "@/services/fetchData";
 import { LessonType } from "@/types/SchemasType";
 import EditIcon from "@/components/Icons/Edit Icon";
