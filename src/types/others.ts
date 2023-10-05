@@ -7,10 +7,10 @@ export type IconsType = {
 }
 
 export type CustomEvent = ChangeEvent<HTMLInputElement | HTMLTextAreaElement> & {
-    target: {
+    target?: {
         name: string;
         value: string;
-        id: string;
+        id?: string;
     };
 };
 

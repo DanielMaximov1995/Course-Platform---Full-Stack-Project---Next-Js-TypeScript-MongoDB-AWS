@@ -8,7 +8,7 @@ type IconPickerProps = {
     selected ?: string;
 };
 
-type IconComponent = {
+export type IconComponent = {
     [key: string]: FC<SVGProps<SVGSVGElement> & IconsType>;
 };
 

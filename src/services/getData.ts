@@ -2,10 +2,17 @@ import {dbConnect} from "@/utils/dbConnect";
 import UserSchema from "@/utils/models/usersModel";
 import LessonSchema from "@/utils/models/LessonsModel";
 import SiteContentModel from "@/utils/models/SiteContentModel";
+import SettingModel from "@/utils/models/SettingModel";
 
 export const getSiteContent = async () => {
     await dbConnect()
     const data =  await SiteContentModel.find().maxTimeMS(15000);
+    return JSON.parse(JSON.stringify(data))
+}
+
+export const getSetting = async () => {
+    await dbConnect()
+    const data =  await SettingModel.findOne().maxTimeMS(15000);
     return JSON.parse(JSON.stringify(data))
 }
 

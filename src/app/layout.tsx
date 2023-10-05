@@ -6,7 +6,7 @@ import IndexHeader from "@/components/Layout/Header/IndexHeader";
 import IndexFooter from "@/components/Layout/IndexFooter";
 import {ThemeProviderContext} from "@/components/ThemeContext";
 import AuthProvider from "@/components/Auth Provider";
-import {getLessons, getSiteContent, getUsers} from "@/services/getData";
+import {getLessons, getSetting, getSiteContent, getUsers} from "@/services/getData";
 import ScrollTop from "@/components/Scroll Top";
 import WhatsAppFloat from "@/components/WhatsApp Float";
 
@@ -20,7 +20,7 @@ const RootLayout = async ({children }: MainLayoutType) => {
     const getAllUsers = await getUsers()
     const getAllLessons = await getLessons()
     const getAllContents = await getSiteContent()
-
+    const getSettingsData = await getSetting()
 
     return (
         <html lang="en" dir='rtl' style={{ scrollBehavior : 'smooth' }}>
@@ -28,7 +28,7 @@ const RootLayout = async ({children }: MainLayoutType) => {
         <AuthProvider>
         <ThemeProviderContext>
             <main className='h-screen relative'>
-                <IndexHeader allUsers={getAllUsers} allLessons={getAllLessons} allContents={getAllContents}/>
+                <IndexHeader settingsData={getSettingsData} allUsers={getAllUsers} allLessons={getAllLessons} allContents={getAllContents}/>
                 {children}
                 <WhatsAppFloat/>
                 <ScrollTop/>

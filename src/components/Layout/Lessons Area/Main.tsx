@@ -1,10 +1,10 @@
 'use client'
 import Modal from "@/components/Modal";
 import {useState , ReactNode} from "react";
-import AcademicIcon from "@/components/Icons/Academic Icon";
 import AddOrEditLesson from "@/components/Layout/Lessons Area/Add Or Edit Lesson";
 import {LessonType} from "@/types/SchemasType";
 import Lessons from "@/components/Layout/Lessons Area/Lessons";
+import {AcademicIcon} from "@/components/Icons";
 
 const MainLessons = ({allLessons} : { allLessons : LessonType[] }) => {
     const [openLessonState, setOpenLessonState] = useState(false);

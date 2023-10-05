@@ -14,8 +14,10 @@ import RestrictedAdminContent from "@/components/Restricted Admin Content";
 import {UserType} from "@/types/SchemasType";
 import {ImportsTypes} from "@/types/Layout";
 import MainContent from "@/components/Layout/Site Content/Main";
+import MainSetting from "@/components/Layout/Setting Area/Main";
 
-const ProfileBox = ({allUsers , allLessons , allContents} : ImportsTypes) => {
+const ProfileBox = (props : ImportsTypes) => {
+    const {allUsers , allLessons , allContents , settingsData} = props
     const {data : user , status , update} = useSession()
     const [open, setOpen] = useState(false);
     const boxRef = useRef<HTMLDivElement | null>(null);
@@ -57,6 +59,9 @@ const ProfileBox = ({allUsers , allLessons , allContents} : ImportsTypes) => {
                             </div>
                             <div className='p-2'>
                                 <MainContent allContents={allContents}/>
+                            </div>
+                            <div className='p-2'>
+                                <MainSetting settingsData={settingsData}/>
                             </div>
                         </RestrictedAdminContent>
                         <button

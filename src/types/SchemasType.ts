@@ -38,6 +38,7 @@ export type LessonType = {
 }
 
 export type BoxesWithImageType = {
+    _id ?: ObjectIdType;
     title?: string;
     subTitle?: string;
     pic?: {
@@ -48,6 +49,7 @@ export type BoxesWithImageType = {
 }
 
 export type BoxesWithIconType = {
+    _id ?: ObjectIdType;
     title?: string;
     subTitle?: string;
     icon ?: string
@@ -81,4 +83,32 @@ export type SiteContentType = {
         alt ? : string;
         url?: string;
     };
+}
+
+export type SettingSiteType = {
+    slug : string;
+    siteName ?: string,
+    titleSeo ?: string,
+    descriptionSeo ?: string,
+    urlSite ?: string,
+    keywords ?: string[],
+    logo ?: {
+        fileName ?: string,
+        alt ?: string,
+        url ?: string,
+    },
+    logoDark ?: {
+        fileName ?: string,
+        alt ?: string,
+        url ?: string,
+    },
+    ogImage ?: {
+        fileName ?: string,
+        alt ?: string,
+        url ?: string,
+    },
+    icon ?: {
+        fileName ?: string,
+        url ?: string,
+    },
 }
