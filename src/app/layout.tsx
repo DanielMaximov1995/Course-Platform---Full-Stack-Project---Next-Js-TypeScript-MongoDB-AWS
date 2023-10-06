@@ -33,6 +33,7 @@ export const generateMetadata = async ({ params, searchParams } : PropsTypes)  =
                 template: `${settings.siteName} • ${settings.titleSeo}`,
                 default: settings.siteName,
             },
+            description: settings?.descriptionSeo,
             images: [settings.ogImage?.url],
             url: settings.urlSite,
         },
