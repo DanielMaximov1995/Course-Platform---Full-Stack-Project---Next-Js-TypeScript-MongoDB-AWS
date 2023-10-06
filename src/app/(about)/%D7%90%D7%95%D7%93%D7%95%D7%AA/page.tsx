@@ -4,6 +4,15 @@ import HorizontalForm from "@/components/Home Page/Horizontal Form";
 import React from 'react'
 import {getSiteContentBySlug} from "@/services/getData";
 import {SiteContentType} from "@/types/SchemasType";
+import {PropsTypes} from "@/types/Layout";
+
+export const generateMetadata = async ({ params, searchParams } : PropsTypes)  => {
+    return {
+        title : 'אודות'
+    }
+}
+
+export const dynamic = 'force-dynamic'
 
 const AboutPage = async () => {
     const content : SiteContentType= await getSiteContentBySlug('עמוד-אודות')

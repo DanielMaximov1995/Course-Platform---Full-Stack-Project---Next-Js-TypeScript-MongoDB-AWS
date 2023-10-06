@@ -9,6 +9,9 @@ import * as Icon from '@/components/Icons'
 import React from 'react'
 import {IconComponent} from "@/components/Icon Picker";
 import * as Icons from "@/components/Icons";
+import Link from "next/link";
+
+export const dynamic = 'force-dynamic'
 
 const HomePage = async ({searchParams}: HomePageType) => {
     const content: SiteContentType = await getSiteContentBySlug('עמוד-הבית')
@@ -98,8 +101,8 @@ const HomePage = async ({searchParams}: HomePageType) => {
                                        sizes='100vw' quality={100}/>
                                 <div className="p-4">
                                     <div className="font-bold text-accent dark:text-accentBg text-xl mb-2 text-center">{content?.title2}</div>
-                                    <p className="text-accentSec dark:text-accentBg ">{content?.subTitle2}</p>
-                                    <button className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 w-full h-full py-2 text-[22px]'>השאירו פרטים להרשמה</button>
+                                    <p className="text-accentSec dark:text-accentBg text-[18px]">{content?.subTitle2}</p>
+                                        <Link href='lessons?lesson=0' className='bg-accent text-white hover:bg-accent/70 transition-all duration-300 flex justify-center w-full h-full py-2 text-[22px]'>לשיעור מתנה</Link>
                                 </div>
                             </div>
                         </div>

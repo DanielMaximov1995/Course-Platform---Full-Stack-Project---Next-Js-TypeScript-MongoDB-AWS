@@ -1,20 +1,15 @@
 'use client'
 
-import AccountIcon from "@/components/Icons/Account Icon";
-import {signIn, signOut, useSession} from "next-auth/react";
+import { signOut, useSession} from "next-auth/react";
 import RestrictedUserContent from "@/components/Restricted User Content";
 import {useState, useRef, useEffect} from "react";
-import UsersIcon from "@/components/Icons/Users Icon";
-import AcademicIcon from "@/components/Icons/Academic Icon";
-import Modal from "@/components/Modal";
-import Main from "@/components/Layout/Users Area/Main";
 import MainLessons from "@/components/Layout/Lessons Area/Main";
 import MainUsers from "@/components/Layout/Users Area/Main";
 import RestrictedAdminContent from "@/components/Restricted Admin Content";
-import {UserType} from "@/types/SchemasType";
 import {ImportsTypes} from "@/types/Layout";
 import MainContent from "@/components/Layout/Site Content/Main";
 import MainSetting from "@/components/Layout/Setting Area/Main";
+import {AccountIcon} from "@/components/Icons";
 
 const ProfileBox = (props : ImportsTypes) => {
     const {allUsers , allLessons , allContents , settingsData} = props
@@ -47,7 +42,7 @@ const ProfileBox = (props : ImportsTypes) => {
                     className='bg-accentSec dark:bg-accentBg rounded-full text-accentBg dark:text-accentSec transition-all duration-300'>
                 <AccountIcon fontSize={40}/>
             </button>
-            <div ref={boxRef} className={`bg-accentBg dark:bg-accentSec dark:shadow-[0_35px_60px_-15px_rgba(250, 231,208,0.3)] shadow-[0_35px_60px_-15px_rgba(26,33,56,0.3)] rounded p-2 w-[270px] z-50 h-auto absolute -left-10 top-[100%] mt-4 transition-all duration-300 ${!open ? 'opacity-0 hidden' : 'block opacity-100'}`}>
+            <div ref={boxRef} className={`bg-accentBg dark:bg-accentSec dark:shadow-[0_35px_60px_-15px_rgba(250, 231,208,0.3)] shadow-[0_35px_60px_-15px_rgba(26,33,56,0.3)] rounded p-2 w-[170px] z-50 h-auto absolute left-2 md:-left-14 top-[100%] mt-4 transition-all duration-300 ${!open ? 'opacity-0 hidden' : 'block opacity-100'}`}>
                 <div className=''>
                     <RestrictedUserContent>
                         <RestrictedAdminContent>

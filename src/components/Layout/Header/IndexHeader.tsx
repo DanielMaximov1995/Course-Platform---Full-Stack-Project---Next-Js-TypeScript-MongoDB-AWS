@@ -6,13 +6,15 @@ import IconButton from "@/components/IconButton";
 import AccountIcon from "@/components/Icons/Account Icon";
 import TooltipBottom from "../../Tooltip Bottom";
 import {useSession , signIn , signOut} from 'next-auth/react'
-import {useSearchParams , useRouter} from "next/navigation";
+import {useSearchParams, useRouter, usePathname} from "next/navigation";
 import GoogleButton from "@/components/Google Button";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import AuthError from "@/components/Home Page/AuthError";
 import ProfileBox from "@/components/Layout/Header/Profile Box";
 import {UserType} from "@/types/SchemasType";
 import {ImportsTypes} from "@/types/Layout";
+import {useTheme} from "next-themes";
+import ResponsiveMenu from "@/components/Layout/Header/Responsive Menu";
 
 const menu = [
     {id: 0, name: 'עמוד הבית', path: '/'},
@@ -27,7 +29,9 @@ const IndexHeader = (props : ImportsTypes) => {
     const {data : user , status , update} = useSession()
     const router = useRouter()
     const searchParams = useSearchParams()
-
+    const pathname = usePathname()
+    const { theme } = useTheme()
+    const isDarkMode = theme === 'dark'
 
     // useEffect(() => {
     //     console.log(error)
@@ -69,18 +73,29 @@ const IndexHeader = (props : ImportsTypes) => {
         <header className='flex fixed bg-accentSec dark:bg-accentBg z-50 justify-between shadow items-center w-full h-[100px]'>
             <AuthError searchParams={searchParams.get('error')}/>
             <div className='flex justify-between items-center w-[90%] mx-auto'>
-                <div className='items-center flex'>
-                    <Link href='/'>
-                    <Image src='/logo.png' alt='' className='object-contain' width={150} height={150}/>
+                <div className='items-center flex justify-between gap-x-10'>
+                    <Link href='/' className='hidden md:block'>
+                        <Image unoptimized={true} src={isDarkMode ? settingsData?.logoDark?.url! : settingsData?.logo?.url!} alt={settingsData?.logoDark?.alt!} width={0} height={0}  className='object-contain w-[100px] md:w-[150px] transition-all duration-300' sizes='100vw' quality={100}/>
                     </Link>
-                    <div className='mr-10 flex items-center gap-x-12'>
+                    <div className='md:hidden'>
+                        <ResponsiveMenu menu={menu}/>
+                    </div>
+                    <div className='mr-10 md:flex hidden items-center gap-x-12'>
                         {
-                            menu.map(item => <Link
-                                className='text-[18px] hover:font-semibold hover:tracking-wider hover:text-accent transition-all duration-300'
-                                key={item.id} href={item.path}>{item.name}</Link>)
+                            menu.map(item => {
+                                const isActive = decodeURIComponent(pathname) === item.path
+                                return <Link
+                                    className={`text-[18px] hover:font-semibold hover:tracking-wider hover:text-accent/60 ${isActive && "font-semibold tracking-wider text-accent"} transition-all duration-300`}
+                                    key={item.id} href={item.path}>{item.name}</Link>
+                            }
+
+                            )
                         }
                     </div>
                 </div>
+                <Link href='/' className='md:hidden'>
+                    <Image unoptimized={true} src={isDarkMode ? settingsData?.logoDark?.url! : settingsData?.logo?.url!} alt={settingsData?.logoDark?.alt!} width={0} height={0}  className='object-contain w-[100px] md:w-[150px] transition-all duration-300' sizes='100vw' quality={100}/>
+                </Link>
                 <div className='flex items-center gap-x-4'>
                     <ThemeSwitcher/>
                     <ProfileBox settingsData={settingsData} allUsers={allUsers} allLessons={allLessons} allContents={allContents}/>

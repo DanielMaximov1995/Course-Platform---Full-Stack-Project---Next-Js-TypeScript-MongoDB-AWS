@@ -3,7 +3,7 @@
 import {ReactNode, useState} from 'react'
 import HomePageContent from "@/components/Layout/Site Content/Home Page Content";
 import AboutPageContent from "@/components/Layout/Site Content/About Page Content";
-import {ContentIcon} from "@/components/Icons";
+import {CloseIcon, ContentIcon} from "@/components/Icons";
 import Modal from "@/components/Modal";
 import {SiteContentType} from "@/types/SchemasType";
 import {ImportsTypes} from "@/types/Layout";
@@ -33,7 +33,8 @@ const MainContent = ({allContents} : ImportsTypes) => {
                 <span>תוכן אתר</span>
             </button>
             <Modal isOpen={openSiteContent} onClose={() => setOpenSiteContent(prev => !prev)}>
-                <div className='w-full md:w-[800px] h-screen overflow-auto z-50 p-6 bg-accentSec dark:bg-accentBg rounded'>
+                <div className='w-full md:w-[800px] h-screen overflow-auto z-50 p-6 relative bg-accentSec dark:bg-accentBg rounded'>
+                    <button onClick={() => setOpenSiteContent(prev => !prev)}><CloseIcon fontSize={30} color='error'/></button>
                     <div className='w-full h-full mx-auto'>
                         <div className='flex my-4 justify-center gap-x-8'>
                             {

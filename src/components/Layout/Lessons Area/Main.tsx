@@ -4,7 +4,7 @@ import {useState , ReactNode} from "react";
 import AddOrEditLesson from "@/components/Layout/Lessons Area/Add Or Edit Lesson";
 import {LessonType} from "@/types/SchemasType";
 import Lessons from "@/components/Layout/Lessons Area/Lessons";
-import {AcademicIcon} from "@/components/Icons";
+import {AcademicIcon, CloseIcon} from "@/components/Icons";
 
 const MainLessons = ({allLessons} : { allLessons : LessonType[] }) => {
     const [openLessonState, setOpenLessonState] = useState(false);
@@ -32,7 +32,8 @@ const MainLessons = ({allLessons} : { allLessons : LessonType[] }) => {
                 <span>שיעורים</span>
             </button>
             <Modal isOpen={openLessonState} onClose={() => setOpenLessonState(prev => !prev)}>
-                <div className='w-full md:w-auto h-auto overflow-auto z-50 p-6 bg-accentSec dark:bg-accentBg rounded'>
+                <div className='w-full md:w-auto h-auto overflow-auto z-50 p-6 bg-accentSec dark:bg-accentBg relative rounded'>
+                    <button onClick={() => setOpenLessonState(prev => !prev)}><CloseIcon fontSize={30} color='error'/></button>
                     <div className='w-full h-full mx-auto'>
                         <div className='flex my-4 justify-center gap-x-8'>
                             {

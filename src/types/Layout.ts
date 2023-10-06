@@ -34,3 +34,8 @@ export type SectionsTypeContents = {
     handleFileToFiles?: (index: string, fileUrl: { url: string; fileName: string; }) => void;
     handleAltPic?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
+
+export type PropsTypes = {
+    params: { id: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}

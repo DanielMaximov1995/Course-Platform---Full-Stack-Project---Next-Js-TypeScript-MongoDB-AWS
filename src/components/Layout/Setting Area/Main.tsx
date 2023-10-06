@@ -1,6 +1,6 @@
 'use client'
 import {useState} from 'react'
-import {SettingIcon} from "@/components/Icons";
+import {CloseIcon, SettingIcon} from "@/components/Icons";
 import Modal from "@/components/Modal";
 import {ImportsTypes} from "@/types/Layout";
 import SettingsForm from "@/components/Layout/Setting Area/Settings Form";
@@ -17,7 +17,8 @@ const MainSetting = ({settingsData} : ImportsTypes) => {
                 <span>הגדרות</span>
             </button>
             <Modal isOpen={openSettingState} onClose={() => setOpenSettingState(prev => !prev)}>
-                <div className='w-full md:w-[800px] h-screen overflow-auto z-50 p-6 bg-accentSec dark:bg-accentBg rounded'>
+                <div className='w-full md:w-[800px] h-screen overflow-auto relative z-50 p-6 bg-accentSec dark:bg-accentBg rounded'>
+                    <button onClick={() => setOpenSettingState(prev => !prev)}><CloseIcon fontSize={30} color='error'/></button>
                     <div className='w-full h-full mx-auto'>
                         <p className='h3 text-center'>הגדרות האתר</p>
                         <SettingsForm settingsData={settingsData}/>

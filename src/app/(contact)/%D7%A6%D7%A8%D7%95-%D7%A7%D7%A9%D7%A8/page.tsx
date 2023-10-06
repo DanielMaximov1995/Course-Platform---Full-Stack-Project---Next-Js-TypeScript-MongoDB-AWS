@@ -9,6 +9,7 @@ import PhoneIcon from "@/components/Icons/Phone Icon";
 import {Fragment} from "react";
 import TooltipBottom from "@/components/Tooltip Bottom";
 import InboxIcon from "@/components/Icons/Inbox Icon";
+import {PropsTypes} from "@/types/Layout";
 
 const socialMedia = [
     { name : 'youtube' , title : 'DVF - עריכת וידאו בכדורגל' , src : 'https://www.youtube.com/@dvf-3182' , icon : <YoutubeIcon color={"error"}/> },
@@ -18,6 +19,14 @@ const socialMedia = [
     { name : 'email' , title : 'דוא"ל - עונים עד 24 שעות' , src : 'mailto:DanielMaximov2@gmail.com' , icon : <InboxIcon color='warning'/> },
     { name : 'phone' , title : '0507255889' , src : 'tel:972507255889' , icon : <span className='dark:text-accentSec text-accentBg'><PhoneIcon/></span> },
 ]
+
+export const generateMetadata = async ({ params, searchParams } : PropsTypes)  => {
+    return {
+        title : 'צרו קשר'
+    }
+}
+
+export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
