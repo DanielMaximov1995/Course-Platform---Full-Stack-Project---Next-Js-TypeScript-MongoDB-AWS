@@ -6,6 +6,7 @@ import React from 'react'
 import Link from "next/link";
 import dynamicNext from 'next/dynamic';
 const IconsBoxes = dynamicNext(() => import('@/components/Home Page/Icons Boxes'))
+const ImagesBoxes = dynamicNext(() => import('@/components/Home Page/Images Boxes'))
 const HorizontalForm = dynamicNext(() => import("@/components/Home Page/Horizontal Form"))
 
 export const dynamic = 'force-dynamic'
@@ -52,24 +53,8 @@ const HomePage = async ({searchParams}: HomePageType) => {
             <section className='w-[80%] mx-auto py-20 '>
                 <h3 className='h2 md:pb-14 text-center text-accentBg dark:text-accent'>למי הקורס מתאים?</h3>
                 <div className='flex flex-wrap justify-between'>
-                    {
-                        content?.boxesWithImage?.map((imageBox: BoxesWithImageType) => (
-                            <div key={imageBox?._id?.toString()!} className='p-1'>
-                                <div
-                                     className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
-                                    <Image loading='lazy' unoptimized={true} src={imageBox?.pic?.url!} width={0} height={0}
-                                           alt={imageBox?.pic?.alt || ""}
-                                           className='object-cover w-full h-[200px] opacity-80 hover:opacity-100 transition-all duration-300'
-                                           sizes='100vw' quality={100}/>
-                                    <div className="p-4">
-                                        <div
-                                            className="font-bold text-accent dark:text-accent text-xl mb-2">{imageBox?.title}</div>
-                                        <p className="text-accentSec dark:text-accentBg">{imageBox?.subTitle}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))
-                    }
+                    <ImagesBoxes boxesWithImage={content?.boxesWithImage}/>
+
                 </div>
             </section>
             <section className='dark:bg-[#222B45] bg-accentBg/5 w-full h-auto py-20 flex flex-wrap items-center'>
@@ -78,7 +63,6 @@ const HomePage = async ({searchParams}: HomePageType) => {
                     <div className='flex w-[90%] md:w-[80%] flex-wrap justify-between gap-x-20 mx-auto items-center'>
                         <div className='flex flex-wrap w-full md:w-1/2'>
                             <IconsBoxes boxesWithIcon={content?.boxesWithIcon}/>
-
                         </div>
                         <div className='flex w-[90%] md:w-[40%] md:justify-end mx-auto'>
                             <div className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
