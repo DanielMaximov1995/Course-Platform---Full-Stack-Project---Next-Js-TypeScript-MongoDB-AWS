@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import {HomePageType} from "@/types/Home Page";
-import {BoxesWithImageType, SiteContentType} from "@/types/SchemasType";
+import {SiteContentType} from "@/types/SchemasType";
 import {getSiteContentBySlug} from "@/services/getData";
 import React from 'react'
 import Link from "next/link";

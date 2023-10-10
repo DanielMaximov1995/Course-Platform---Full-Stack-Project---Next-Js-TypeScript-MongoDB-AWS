@@ -1,8 +1,7 @@
 'use client'
 
-import {BoxesWithIconType, BoxesWithImageType} from "@/types/SchemasType";
+import {BoxesWithImageType} from "@/types/SchemasType";
 import Image from "next/image";
-import React from "react";
 
 
 const ImagesBoxes = ({boxesWithImage} : {boxesWithImage ?: BoxesWithImageType[]}) => {
