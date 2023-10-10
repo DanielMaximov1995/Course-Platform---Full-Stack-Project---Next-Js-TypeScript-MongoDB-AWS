@@ -25,7 +25,7 @@ export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
-      <main className="flex h-auto w-[90%] mx-auto flex-col items-center justify-between py-24">
+      <main className="flex h-auto w-[90%] mx-auto flex-col items-center justify-between pt-16">
       <h1 className='h2 border-x-[4px] border-accentBg dark:border-accent px-6 md:px-20 mt-20 rounded-xl text-accentBg dark:text-accent'>צרו קשר</h1>
           <p className='py-2 text-center text-[18px]'>אנו נשמח לענות לשאלות שלכם בכל דרך שבה תבחרו ליצור איתנו קשר. אנו זמינים לשאלות בכל נושא.</p>
           <Form/>
