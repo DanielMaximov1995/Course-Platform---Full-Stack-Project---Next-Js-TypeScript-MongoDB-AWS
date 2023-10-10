@@ -1,20 +1,15 @@
 'use client'
-import ThemeSwitcher from "@/components/Layout/Header/Theme Switcher";
 import Image from "next/image";
 import Link from "next/link";
-import IconButton from "@/components/IconButton";
-import AccountIcon from "@/components/Icons/Account Icon";
-import TooltipBottom from "../../Tooltip Bottom";
 import {useSession , signIn , signOut} from 'next-auth/react'
 import {useSearchParams, useRouter, usePathname} from "next/navigation";
-import GoogleButton from "@/components/Google Button";
-import React, {useEffect, useState} from "react";
 import AuthError from "@/components/Home Page/AuthError";
-import ProfileBox from "@/components/Layout/Header/Profile Box";
-import {UserType} from "@/types/SchemasType";
 import {ImportsTypes} from "@/types/Layout";
 import {useTheme} from "next-themes";
-import ResponsiveMenu from "@/components/Layout/Header/Responsive Menu";
+import dynamicNext from 'next/dynamic';
+const ProfileBox = dynamicNext(() => import('@/components/Layout/Header/Profile Box'))
+const ThemeSwitcher = dynamicNext(() => import("@/components/Layout/Header/Theme Switcher"))
+const ResponsiveMenu = dynamicNext(() => import("@/components/Layout/Header/Responsive Menu"))
 
 const menu = [
     {id: 0, name: 'עמוד הבית', path: '/'},
@@ -27,7 +22,6 @@ const menu = [
 const IndexHeader = (props : ImportsTypes) => {
     const {allUsers , allLessons , allContents , settingsData} = props
     const {data : user , status , update} = useSession()
-    const router = useRouter()
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const { theme } = useTheme()

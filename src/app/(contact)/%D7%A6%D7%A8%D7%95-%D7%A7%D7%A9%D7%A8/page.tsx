@@ -1,15 +1,10 @@
 import Link from 'next/link'
-import Form from "@/components/Contact/Form";
-import YoutubeIcon from "@/components/Icons/Youtube Icon";
-import FacebookIcon from "@/components/Icons/Facebook Icon";
-import InstagramIcon from "@/components/Icons/Instagram Icon";
-import WhatsappIcon from "@/components/Icons/Whatsapp Icon";
-import EmailIcon from "@/components/Icons/Email Icon";
-import PhoneIcon from "@/components/Icons/Phone Icon";
+import dynamicNext from 'next/dynamic';
+const Form = dynamicNext(() => import("@/components/Contact/Form"))
 import {Fragment} from "react";
 import TooltipBottom from "@/components/Tooltip Bottom";
-import InboxIcon from "@/components/Icons/Inbox Icon";
 import {PropsTypes} from "@/types/Layout";
+import {FacebookIcon, InboxIcon, InstagramIcon, PhoneIcon, WhatsappIcon, YoutubeIcon} from "@/components/Icons";
 
 const socialMedia = [
     { name : 'youtube' , title : 'DVF - עריכת וידאו בכדורגל' , src : 'https://www.youtube.com/@dvf-3182' , icon : <YoutubeIcon color={"error"}/> },

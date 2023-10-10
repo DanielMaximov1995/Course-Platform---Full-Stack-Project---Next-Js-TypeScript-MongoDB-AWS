@@ -16,7 +16,7 @@ const VideoPlayer: FC<{ lesson: LessonType | null }> = ({ lesson }) => {
         return null
     }
         return (
-            <div className="relative w-full aspect-w-16 aspect-h-9" >
+            <div className="relative flex justify-center w-full aspect-w-16 aspect-h-9" >
                 <video
                     controls
                     src={videoSrc}

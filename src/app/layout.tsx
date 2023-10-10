@@ -1,5 +1,4 @@
 import './globals.css'
-import type {Metadata} from 'next'
 import {Assistant} from 'next/font/google'
 import {MainLayoutType, PropsTypes} from "@/types/Layout";
 import IndexHeader from "@/components/Layout/Header/IndexHeader";

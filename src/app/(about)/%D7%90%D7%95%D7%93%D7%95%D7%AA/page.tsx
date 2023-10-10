@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import HorizontalForm from "@/components/Home Page/Horizontal Form";
-
-import React from 'react'
+import dynamicNext from 'next/dynamic';
+const HorizontalForm = dynamicNext(() => import("@/components/Home Page/Horizontal Form"))
 import {getSiteContentBySlug} from "@/services/getData";
 import {SiteContentType} from "@/types/SchemasType";
 import {PropsTypes} from "@/types/Layout";

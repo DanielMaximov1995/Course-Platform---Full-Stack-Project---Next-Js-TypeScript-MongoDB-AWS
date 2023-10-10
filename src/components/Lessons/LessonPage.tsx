@@ -50,7 +50,6 @@ const LessonPage = ({lesson , lessonsLength , order} : LessonPageType) => {
         })
     }
 
-    console.log(order)
 
     return (
         <div className='my-1'>

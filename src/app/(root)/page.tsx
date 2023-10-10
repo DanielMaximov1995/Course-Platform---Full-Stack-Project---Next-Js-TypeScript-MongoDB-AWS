@@ -1,15 +1,12 @@
 import Image from 'next/image'
-import HorizontalForm from "@/components/Home Page/Horizontal Form";
 import {HomePageType} from "@/types/Home Page";
-import AuthError from "@/components/Home Page/AuthError";
-import AccountIcon from "@/components/Icons/Account Icon";
-import {BoxesWithIconType, BoxesWithImageType, SiteContentType} from "@/types/SchemasType";
+import {BoxesWithImageType, SiteContentType} from "@/types/SchemasType";
 import {getSiteContentBySlug} from "@/services/getData";
-import * as Icon from '@/components/Icons'
 import React from 'react'
-import {IconComponent} from "@/components/Icon Picker";
-import * as Icons from "@/components/Icons";
 import Link from "next/link";
+import dynamicNext from 'next/dynamic';
+const IconsBoxes = dynamicNext(() => import('@/components/Home Page/Icons Boxes'))
+const HorizontalForm = dynamicNext(() => import("@/components/Home Page/Horizontal Form"))
 
 export const dynamic = 'force-dynamic'
 
@@ -17,15 +14,14 @@ const HomePage = async ({searchParams}: HomePageType) => {
     const content: SiteContentType = await getSiteContentBySlug('עמוד-הבית')
 
     return (
-        <main>
-            {searchParams && <AuthError searchParams={searchParams}/>}
-            <section className='flex flex-wrap md:flex-nowrap w-[90%] mx-auto h-[800px] py-32 items-center'>
+        <main className='pt-20 md:pt-0'>
+            <section className='flex flex-wrap md:flex-nowrap w-[90%] mx-auto h-[800px] items-center'>
                 <div className='w-full'>
                     <h1 className='h2 border-r-[4px] border-accentBg dark:border-accent px-6 rounded-xl text-accentBg dark:text-accent'>{content?.title}</h1>
                     <p className='h5 text-accentBg dark:text-accent mr-6'>{content?.subTitle}</p>
                     <p className=' whitespace-pre-wrap py-2 text-[18px] mr-6'>{content?.text}</p>
                 </div>
-                <div className='relative w-full h-full'>
+                <div className='relative w-full h-full flex items-center'>
                     <Image unoptimized={true} src={content?.pic?.url!} width={0} height={0}
                            alt={content?.pic?.alt || ""}
                            className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]'
@@ -36,7 +32,7 @@ const HomePage = async ({searchParams}: HomePageType) => {
                 <div className='w-full'>
                     <div
                         className='flex flex-wrap md:flex-nowrap w-[80%] justify-between md:gap-x-20 mx-auto items-center'>
-                        <div className='w-1/2'>
+                        <div className='md:w-1/2'>
                             <Image unoptimized={true} src={content?.pic1?.url!} width={0} height={0}
                                    alt={content?.pic1?.alt || ""}
                                    className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]'
@@ -58,16 +54,18 @@ const HomePage = async ({searchParams}: HomePageType) => {
                 <div className='flex flex-wrap justify-between'>
                     {
                         content?.boxesWithImage?.map((imageBox: BoxesWithImageType) => (
-                            <div key={imageBox?._id?.toString()!}
-                                 className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
-                                <Image unoptimized={true} src={imageBox?.pic?.url!} width={0} height={0}
-                                       alt={imageBox?.pic?.alt || ""}
-                                       className='object-cover w-full h-[200px] opacity-80 hover:opacity-100 transition-all duration-300'
-                                       sizes='100vw' quality={100}/>
-                                <div className="px-6 py-4">
-                                    <div
-                                        className="font-bold text-accent dark:text-accent text-xl mb-2">{imageBox?.title}</div>
-                                    <p className="text-accentSec dark:text-accentBg">{imageBox?.subTitle}</p>
+                            <div key={imageBox?._id?.toString()!} className='p-1'>
+                                <div
+                                     className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
+                                    <Image unoptimized={true} src={imageBox?.pic?.url!} width={0} height={0}
+                                           alt={imageBox?.pic?.alt || ""}
+                                           className='object-cover w-full h-[200px] opacity-80 hover:opacity-100 transition-all duration-300'
+                                           sizes='100vw' quality={100}/>
+                                    <div className="p-4">
+                                        <div
+                                            className="font-bold text-accent dark:text-accent text-xl mb-2">{imageBox?.title}</div>
+                                        <p className="text-accentSec dark:text-accentBg">{imageBox?.subTitle}</p>
+                                    </div>
                                 </div>
                             </div>
                         ))
@@ -79,19 +77,8 @@ const HomePage = async ({searchParams}: HomePageType) => {
                     <h4 className='h2 md:pb-14 text-center text-accentBg dark:text-accent' id='מה_מקבלים?'>מה מקבלים?</h4>
                     <div className='flex w-[90%] md:w-[80%] flex-wrap justify-between gap-x-20 mx-auto items-center'>
                         <div className='flex flex-wrap w-full md:w-1/2'>
-                            {
-                                content?.boxesWithIcon?.map((boxIcon : BoxesWithIconType) => {
-                                    const iconComponents: IconComponent = Icons;
-                                    const IconComponent = iconComponents[boxIcon?.icon!];
-                                    return <div key={boxIcon?._id?.toString()} className='w-1/2 p-2'>
-                                        <div className='bg-accentBg dark:bg-accentSec p-2 py-4 max-h-max rounded-xl'>
-                                            <span className='flex justify-center dark:text-accentBg text-accent '><IconComponent fontSize={80}/></span>
-                                            <p className='text-center text-accent dark:text-accentBg text-[22px]'>{boxIcon?.title}</p>
-                                            <p className='text-center text-accentSec dark:text-accentBg'>{boxIcon?.subTitle}</p>
-                                        </div>
-                                    </div>
-                                } )
-                            }
+                            <IconsBoxes boxesWithIcon={content?.boxesWithIcon}/>
+
                         </div>
                         <div className='flex w-[90%] md:w-[40%] md:justify-end mx-auto'>
                             <div className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
