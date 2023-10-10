@@ -17,6 +17,7 @@ const ProfileBox = (props : ImportsTypes) => {
     const [open, setOpen] = useState(false);
     const boxRef = useRef<HTMLDivElement | null>(null);
     const buttonRef = useRef<HTMLButtonElement | null>(null);
+    const isLogin = status === 'authenticated'
 
     useEffect(() => {
         const handleOutsideClick = (event : MouseEvent) => {
@@ -42,7 +43,7 @@ const ProfileBox = (props : ImportsTypes) => {
                     className='bg-accentSec dark:bg-accentBg rounded-full text-accentBg dark:text-accentSec transition-all duration-300'>
                 <AccountIcon fontSize={40}/>
             </button>
-            <div ref={boxRef} className={`bg-accentBg dark:bg-accentSec dark:shadow-[0_35px_60px_-15px_rgba(250, 231,208,0.3)] shadow-[0_35px_60px_-15px_rgba(26,33,56,0.3)] rounded p-2 w-[170px] z-50 h-auto absolute left-2 md:-left-14 top-[100%] mt-4 transition-all duration-300 ${!open ? 'opacity-0 hidden' : 'block opacity-100'}`}>
+            <div ref={boxRef} className={`bg-accentBg dark:bg-accentSec dark:shadow-[0_35px_60px_-15px_rgba(250, 231,208,0.3)] shadow-[0_35px_60px_-15px_rgba(26,33,56,0.3)] rounded p-2 ${isLogin ? "w-[170px]" : "w-[250px]"} z-50 h-auto absolute left-2 md:-left-14 top-[100%] mt-4 transition-all duration-300 ${!open ? 'opacity-0 hidden' : 'block opacity-100'}`}>
                 <div className=''>
                     <RestrictedUserContent>
                         <RestrictedAdminContent>
