@@ -81,7 +81,7 @@ const RootLayout = async ({children }: MainLayoutType) => {
         <ThemeProviderContext>
             <main className='h-screen relative'>
                 <IndexHeader settingsData={getSettingsData} allUsers={getAllUsers} allLessons={getAllLessons} allContents={getAllContents}/>
-                <main className='py-10'>
+                <main className='pt-10'>
                     {children}
                 </main>
                 <WhatsAppFloat/>
