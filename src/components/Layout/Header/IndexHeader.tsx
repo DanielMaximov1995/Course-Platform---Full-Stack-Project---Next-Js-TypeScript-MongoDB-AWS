@@ -7,9 +7,9 @@ import AuthError from "@/components/Home Page/AuthError";
 import {ImportsTypes} from "@/types/Layout";
 import {useTheme} from "next-themes";
 import dynamicNext from 'next/dynamic';
-const ProfileBox = dynamicNext(() => import('@/components/Layout/Header/Profile Box'))
-const ThemeSwitcher = dynamicNext(() => import("@/components/Layout/Header/Theme Switcher"))
-const ResponsiveMenu = dynamicNext(() => import("@/components/Layout/Header/Responsive Menu"))
+const ProfileBox = dynamicNext(() => import('@/components/Layout/Header/Profile Box') , { ssr : false })
+const ThemeSwitcher = dynamicNext(() => import("@/components/Layout/Header/Theme Switcher"), { ssr : false })
+const ResponsiveMenu = dynamicNext(() => import("@/components/Layout/Header/Responsive Menu"), { ssr : false })
 
 const menu = [
     {id: 0, name: 'עמוד הבית', path: '/'},

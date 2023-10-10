@@ -5,7 +5,7 @@ import {getSiteContentBySlug} from "@/services/getData";
 import React from 'react'
 import Link from "next/link";
 import dynamicNext from 'next/dynamic';
-const IconsBoxes = dynamicNext(() => import('@/components/Home Page/Icons Boxes'))
+const IconsBoxes =   dynamicNext(() => import('@/components/Home Page/Icons Boxes'))
 const ImagesBoxes = dynamicNext(() => import('@/components/Home Page/Images Boxes'))
 const HorizontalForm = dynamicNext(() => import("@/components/Home Page/Horizontal Form"))
 
