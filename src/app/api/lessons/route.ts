@@ -2,8 +2,8 @@ import {dbConnect} from "@/utils/dbConnect";
 import { NextResponse } from 'next/server'
 import {getServerSession} from "next-auth";
 import {authOptions} from "@/app/api/auth/[...nextauth]/route";
-import LessonSchema from "@/utils/models/LessonsModel";
 import UserSchema from "@/utils/models/usersModel";
+import LessonSchema from "@/utils/models/LessonsModel";
 
 export const GET = async () => {
     try {

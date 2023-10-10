@@ -6,6 +6,12 @@ type LessonsCompletedType = {
     [key: string]: boolean;
 };
 
+export type ContactType = {
+    name ?: string;
+    phone ?:string;
+    text ?: string
+}
+
 export type UserType = {
     _id?: ObjectIdType;
     fName?: string;

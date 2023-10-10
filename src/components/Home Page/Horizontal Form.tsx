@@ -1,12 +1,15 @@
 'use client'
 import {ChangeEvent, FormEvent, useState} from "react";
+import {contactUsPost} from "@/services/fetchData";
+import {useToast} from "@/components/Toast/ToastContext";
 
 const HorizontalForm = () => {
     const [form, setForm] = useState({
-        fullName : '',
+        name : '',
         email : '',
         phone : '',
     });
+    const toast = useToast()
 
     const handleChange = (e : ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -26,6 +29,22 @@ const HorizontalForm = () => {
     const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
+        if (!form.phone && !form.email) {
+            return toast.warning('חובה למלא פרטי התקשרות !')
+        }
+
+        toast.promise(
+            () => contactUsPost(form),
+            {
+                progress: "שולח את הודעתך",
+                success: (data: any) => {
+                    return data.message;
+                },
+                error: async (err: any) => {
+                    return err.message;
+                }
+            }
+        );
     }
 
     return (
@@ -36,8 +55,8 @@ const HorizontalForm = () => {
                     <input
                         className="w-full h-[60px] transition-all duration-300 px-4 rounded-0 text-[18px] pl-10 bg-white outline-accent outline outline-1 dark:outline-transparent focus:outline-accent focus:text-accent"
                         placeholder='שם'
-                        name='fullName'
-                        value={form.fullName || ''}
+                        name='name'
+                        value={form.name || ''}
                         onChange={handleChange}
                         autoComplete="off"
                     />
