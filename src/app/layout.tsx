@@ -65,7 +65,7 @@ const RootLayout = async ({children }: MainLayoutType) => {
 
     return (
         <html lang="en" dir='rtl' style={{ scrollBehavior : 'smooth' }}>
-        <Script strategy='afterInteractive'>{`
+        <Script id='hotjar' strategy='afterInteractive'>{`
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:3553114,hjsv:6};
