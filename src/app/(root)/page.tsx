@@ -22,7 +22,7 @@ const HomePage = async ({searchParams}: HomePageType) => {
                     <p className=' whitespace-pre-wrap py-2 text-[18px] mr-6'>{content?.text}</p>
                 </div>
                 <div className='relative w-full h-full flex items-center'>
-                    <Image unoptimized={true} src={content?.pic?.url!} width={0} height={0}
+                    <Image loading='lazy' unoptimized={true} src={content?.pic?.url!} width={0} height={0}
                            alt={content?.pic?.alt || ""}
                            className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]'
                            sizes='100vw' quality={100}/>
@@ -33,7 +33,7 @@ const HomePage = async ({searchParams}: HomePageType) => {
                     <div
                         className='flex flex-wrap md:flex-nowrap w-[80%] justify-between md:gap-x-20 mx-auto items-center'>
                         <div className='md:w-1/2'>
-                            <Image unoptimized={true} src={content?.pic1?.url!} width={0} height={0}
+                            <Image loading='lazy' unoptimized={true} src={content?.pic1?.url!} width={0} height={0}
                                    alt={content?.pic1?.alt || ""}
                                    className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]'
                                    sizes='100vw' quality={100}/>
@@ -57,7 +57,7 @@ const HomePage = async ({searchParams}: HomePageType) => {
                             <div key={imageBox?._id?.toString()!} className='p-1'>
                                 <div
                                      className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
-                                    <Image unoptimized={true} src={imageBox?.pic?.url!} width={0} height={0}
+                                    <Image loading='lazy' unoptimized={true} src={imageBox?.pic?.url!} width={0} height={0}
                                            alt={imageBox?.pic?.alt || ""}
                                            className='object-cover w-full h-[200px] opacity-80 hover:opacity-100 transition-all duration-300'
                                            sizes='100vw' quality={100}/>
@@ -82,7 +82,7 @@ const HomePage = async ({searchParams}: HomePageType) => {
                         </div>
                         <div className='flex w-[90%] md:w-[40%] md:justify-end mx-auto'>
                             <div className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
-                                <Image unoptimized={true} src={content?.pic2?.url!} width={0} height={0}
+                                <Image loading='lazy' unoptimized={true} src={content?.pic2?.url!} width={0} height={0}
                                        alt={content?.pic2?.alt || ""}
                                        className='object-cover w-full h-[200px] opacity-80 hover:opacity-100 transition-all duration-300'
                                        sizes='100vw' quality={100}/>

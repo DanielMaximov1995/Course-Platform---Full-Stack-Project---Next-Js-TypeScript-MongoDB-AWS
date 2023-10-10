@@ -26,7 +26,7 @@ const AboutPage = async () => {
                         <div className='md:pl-30 py-2 text-[18px] mr-6' dangerouslySetInnerHTML={{ __html: content?.text ?? "" }} />
                     </div>
                     <div className='relative w-[80%] h-full'>
-                        <Image unoptimized={true} src={content?.pic?.url!} width={0} height={0} alt={content?.pic?.alt || ""} className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]' sizes='100vw' quality={100}/>
+                        <Image loading='lazy' unoptimized={true} src={content?.pic?.url!} width={0} height={0} alt={content?.pic?.alt || ""} className='object-contain w-full opacity-80 hover:opacity-100 transition-all duration-300 rounded-[24px]' sizes='100vw' quality={100}/>
                     </div>
                 </div>
             </section>
