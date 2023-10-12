@@ -23,7 +23,7 @@ export const generateMetadata = async ({ params, searchParams } : PropsTypes)  =
         },
         description: settings?.descriptionSeo,
         icons : {
-            icon : settings?.icon?.url!
+            icon : settings?.icon?.url || "/favicon.ico"
         },
         keywords : settings.keywords,
         authors: [{ name: 'Daniel' }, { name: 'Maximov', url: settings.urlSite }],
