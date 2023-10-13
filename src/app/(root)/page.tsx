@@ -16,7 +16,7 @@ const HomePage = async ({searchParams}: HomePageType) => {
 
     return (
         <main className='pt-20 md:pt-0'>
-            <section className='flex flex-wrap md:flex-nowrap w-[90%] mx-auto h-[800px] items-center'>
+            <section className='flex flex-wrap md:flex-nowrap w-[90%] mx-auto md:h-[800px] h-auto items-center'>
                 <div className='w-full'>
                     <h1 className='h2 border-r-[4px] border-accentBg dark:border-accent px-6 rounded-xl text-accentBg dark:text-accent'>{content?.title}</h1>
                     <p className='h5 text-accentBg dark:text-accent mr-6'>{content?.subTitle}</p>
@@ -54,7 +54,6 @@ const HomePage = async ({searchParams}: HomePageType) => {
                 <h3 className='h2 md:pb-14 text-center text-accentBg dark:text-accent'>למי הקורס מתאים?</h3>
                 <div className='flex flex-wrap justify-between'>
                     <ImagesBoxes boxesWithImage={content?.boxesWithImage}/>
-
                 </div>
             </section>
             <section className='dark:bg-[#222B45] bg-accentBg/5 w-full h-auto py-20 flex flex-wrap items-center'>

@@ -9,7 +9,7 @@ const ImagesBoxes = ({boxesWithImage} : {boxesWithImage ?: BoxesWithImageType[]}
         <>
             {
                 boxesWithImage?.map((imageBox: BoxesWithImageType) => (
-                    <div key={imageBox?._id?.toString()!} className='p-1'>
+                    <div key={imageBox?._id?.toString()!} className='py-4'>
                         <div
                             className="max-w-sm rounded-xl bg-accentBg dark:bg-accentSec overflow-hidden shadow-lg">
                             <Image loading='lazy' unoptimized={true} src={imageBox?.pic?.url!} width={0} height={0}
