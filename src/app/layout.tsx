@@ -65,7 +65,7 @@ const RootLayout = async ({children }: MainLayoutType) => {
 
     return (
         <html lang="en" dir='rtl' style={{ scrollBehavior : 'smooth' }}>
-        <Script src="https://cdn.userway.org/widget.js" data-account={process.env.USERWAY!}></Script>
+        <Script src="https://cdn.userway.org/widget.js" data-language="he" data-account={process.env.USERWAY!}></Script>
         <Script id='hotjar' strategy='afterInteractive'>{`
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
