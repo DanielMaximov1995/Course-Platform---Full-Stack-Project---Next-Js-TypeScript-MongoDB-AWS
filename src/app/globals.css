@@ -10,6 +10,10 @@ body {
   transition-duration: 300ms;
 }
 
+.uwaw-footer , .uwaw-how-it-works , .uwaw-oversized__wrapper.uwaw-switcher-wrap.uwaw-switcher-wrap_fw {
+  display: none;
+}
+
 
 [class='light'] body {
   color: #1A2138;
